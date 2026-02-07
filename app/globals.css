@@ -1,0 +1,264 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Premium ecommerce - warm, minimal palette */
+  --background: #F6F1E8;
+  --foreground: #1C1B19;
+  --card: #FFFFFF;
+  --card-foreground: #1C1B19;
+  --popover: #FFFFFF;
+  --popover-foreground: #1C1B19;
+  --primary: #1C1B19;
+  --primary-foreground: #F6F1E8;
+  --secondary: #F6F1E8;
+  --secondary-foreground: #1C1B19;
+  /* Muted surfaces + muted text */
+  --muted: #EFE6D8;
+  --muted-foreground: #5C5750;
+  --accent: #B08D57;
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: #E7DED2;
+  --input: #F6F1E8;
+  --ring: #B08D57;
+  --chart-1: #B08D57;
+  --chart-2: #1C1B19;
+  --chart-3: #5C5750;
+  --chart-4: #E7DED2;
+  --chart-5: #F6F1E8;
+  --radius: 1rem;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #1C1B19;
+  --sidebar-primary: #1C1B19;
+  --sidebar-primary-foreground: #F6F1E8;
+  --sidebar-accent: #B08D57;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #E7DED2;
+  --sidebar-ring: #B08D57;
+}
+
+
+
+@theme inline {
+  --font-sans: 'Inter', 'Inter Fallback';
+  --font-serif: 'Fraunces', 'Fraunces Fallback';
+  --font-mono: 'Inter Mono', 'Inter Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-normal tracking-tight;
+  }
+  
+  h1 {
+    @apply text-5xl leading-tight;
+  }
+  
+  h2 {
+    @apply text-4xl leading-tight;
+  }
+  
+  h3 {
+    @apply text-2xl leading-relaxed;
+  }
+  
+  p {
+    @apply leading-relaxed text-muted-foreground;
+  }
+
+  /* Ensure list items are readable even when wrapped in <p> styles elsewhere */
+  li {
+    @apply text-muted-foreground;
+  }
+  
+  /* Premium button styles */
+  button {
+    @apply transition-all duration-200;
+  }
+
+  /* Smooth scrolling */
+  html {
+    @apply scroll-smooth;
+  }
+
+  /* Enhanced focus states */
+  a:focus-visible,
+  button:focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+}
+
+/* Journal Cut Decorative Elements */
+.journal-cut {
+  position: absolute;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  filter: sepia(0.35) brightness(0.92) contrast(1.15);
+  transition: all 0.3s ease;
+  will-change: transform;
+}
+
+/* Journal Cut 1 - Shop Best Sellers Section */
+.journal-cut--best {
+  top: -30px;
+  left: -20px;
+  width: min(320px, 25vw);
+  height: auto;
+  opacity: 0.55;
+  transform: rotate(-15deg);
+  z-index: 1;
+  max-width: 400px;
+}
+
+/* Journal Cut 2 - Collections Section Background */
+.journal-cut--collections {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(12deg);
+  width: min(900px, 65vw);
+  height: auto;
+  opacity: 0.25;
+  z-index: 0;
+  max-width: 1000px;
+}
+
+/* Responsive adjustments - Large screens */
+@media (min-width: 1440px) {
+  .journal-cut--best {
+    width: 380px;
+    top: -40px;
+    left: -30px;
+  }
+  
+  .journal-cut--collections {
+    width: 950px;
+  }
+}
+
+/* Responsive adjustments - Desktop */
+@media (max-width: 1280px) {
+  .journal-cut--best {
+    width: min(280px, 22vw);
+    top: -25px;
+    left: -15px;
+  }
+  
+  .journal-cut--collections {
+    width: min(800px, 62vw);
+    opacity: 0.23;
+  }
+}
+
+/* Tablet landscape */
+@media (max-width: 1024px) {
+  .journal-cut--best {
+    width: min(240px, 28vw);
+    top: -20px;
+    left: -10px;
+    transform: rotate(-12deg);
+  }
+  
+  .journal-cut--collections {
+    width: min(700px, 70vw);
+    opacity: 0.2;
+    transform: translate(-50%, -50%) rotate(10deg);
+  }
+}
+
+/* Tablet portrait */
+@media (max-width: 768px) {
+  .journal-cut--best {
+    width: min(200px, 32vw);
+    top: -15px;
+    left: -8px;
+    opacity: 0.48;
+    transform: rotate(-10deg);
+  }
+  
+  .journal-cut--collections {
+    width: min(600px, 75vw);
+    opacity: 0.18;
+    transform: translate(-50%, -50%) rotate(8deg);
+  }
+}
+
+/* Mobile landscape */
+@media (max-width: 640px) {
+  .journal-cut--best {
+    width: min(160px, 35vw);
+    top: -10px;
+    left: -5px;
+    opacity: 0.42;
+    transform: rotate(-8deg);
+  }
+  
+  .journal-cut--collections {
+    width: min(500px, 80vw);
+    opacity: 0.15;
+    transform: translate(-50%, -50%) rotate(6deg);
+  }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+  .journal-cut--best {
+    width: min(140px, 38vw);
+    top: -8px;
+    left: -5px;
+    opacity: 0.38;
+    transform: rotate(-6deg);
+  }
+  
+  .journal-cut--collections {
+    width: 85vw;
+    opacity: 0.12;
+    transform: translate(-50%, -50%) rotate(5deg);
+  }
+}

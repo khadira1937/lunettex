@@ -69,6 +69,75 @@ export default function Home() {
     return buildWhatsAppLink(msg)
   }
 
+  // Per‑model copy (so switching model updates the whole content, not just the price)
+  const modelCopy = useMemo(() => {
+    return {
+      rw4006: {
+        ar: {
+          bullets: `• كاميرا مدمجة للتصوير بلا يدين.
+• صوت Open‑Ear باش تسمع بلا ما تعزل على اللي داير بك.
+• مايكات باش المكالمات تكون واضحة.
+• تحكم: زر التقاط + Touch فالإطار.`, 
+          importantTitle: 'معلومة مهمة',
+          importantBody:
+            'كتحتاج هاتف + Bluetooth + التطبيق باش تركّب وتبدّل الإعدادات وتنسّق الصور/الفيديو.',
+        },
+        en: {
+          bullets: `• Built‑in camera for hands‑free capture.
+• Open‑ear audio so you stay aware.
+• Multiple mics for clearer calls.
+• Controls: capture button + touch controls on the frame.`, 
+          importantTitle: 'Important',
+          importantBody:
+            'Requires a phone + Bluetooth + the companion app for setup, settings, and syncing photos/videos.',
+        },
+        fr: {
+          bullets: `• Caméra intégrée pour capturer en mains libres.
+• Audio open‑ear pour rester conscient de votre environnement.
+• Plusieurs micros pour des appels plus clairs.
+• Contrôles: bouton capture + tactile sur la branche.`, 
+          importantTitle: 'Important',
+          importantBody:
+            'Nécessite un téléphone + Bluetooth + l’application compagnon pour l’installation, les réglages et la synchronisation.',
+        },
+      },
+      'wayfarer-essilor': {
+        ar: {
+          bullets: `• نفس روح Wayfarer: ستايل كلاسيكي + تكنولوجيا ذكية.
+• كاميرا مدمجة للتصوير بلا يدين.
+• صوت Open‑Ear + مايكات للمكالمات.
+• تحكم سهل: زر التقاط + Touch.`, 
+          importantTitle: 'معلومة مهمة',
+          importantBody:
+            'كتحتاج هاتف + Bluetooth + التطبيق باش تركّب وتستعمل المزايا الذكية وتنسّق المحتوى.',
+        },
+        en: {
+          bullets: `• Classic Wayfarer look with smart features.
+• Built‑in camera for hands‑free capture.
+• Open‑ear audio + mics for calls.
+• Easy controls: capture button + touch controls.`, 
+          importantTitle: 'Important',
+          importantBody:
+            'Requires a phone + Bluetooth + the companion app to use smart features and sync content.',
+        },
+        fr: {
+          bullets: `• Look Wayfarer classique avec fonctions smart.
+• Caméra intégrée pour capturer en mains libres.
+• Audio open‑ear + micros pour les appels.
+• Contrôles simples: bouton capture + tactile.`, 
+          importantTitle: 'Important',
+          importantBody:
+            'Nécessite un téléphone + Bluetooth + l’application compagnon pour utiliser les fonctions smart et synchroniser.',
+        },
+      },
+    } as const
+  }, [])
+
+  const selectedCopy =
+    selectedId === 'rw4006'
+      ? modelCopy.rw4006[lang]
+      : modelCopy['wayfarer-essilor'][lang]
+
   const ui =
     lang === 'ar'
       ? {
@@ -78,7 +147,7 @@ export default function Home() {
           subtitle:
             'كاميرا بلا يدين + صوت Open‑Ear. اختار الموديل فالأسفل ثم طلب عبر واتساب — والدفع عند الاستلام.',
           note:
-            'ملاحظة: بعض المزايا (Meta app/AI) كتبدل حسب الدولة والإعدادات. كنكونو واضحين قبل الطلب.',
+            'ملاحظة: باش تستافد من المزايا الذكية خاصك هاتف + Bluetooth + التطبيق للإعدادات وتنسيق الصور/الفيديو.',
           ctaOrder: 'طلب عبر واتساب',
           ctaDetails: 'شوف التفاصيل',
           trust: [
@@ -104,8 +173,8 @@ export default function Home() {
           faqMore: 'شوف الكل →',
           faq: [
             {
-              q: 'واش خدامة فالمغرب؟',
-              a: 'المزايا الأساسية (كاميرا/صوت) خدامين. Meta AI والتطبيق ممكن يختلف حسب الدولة.',
+              q: 'كيفاش كتخدم؟',
+              a: 'كتربطها بالتليفون عبر Bluetooth وكتكمّل الإعدادات فالتطبيق، ومن بعد كتقدر تصوّر وتسمع وتدير مكالمات بسهولة.',
             },
             {
               q: 'كيفاش نطلب؟',
@@ -123,7 +192,7 @@ export default function Home() {
             subtitle:
               'Hands‑free camera + open‑ear audio. Choose your model below, then order on WhatsApp — pay on delivery.',
             note:
-              'Note: some features (Meta app/AI) depend on country availability and phone settings. We stay transparent.',
+              'Note: you’ll need a phone + Bluetooth + the companion app for setup, settings, and syncing photos/videos.',
             ctaOrder: 'Order on WhatsApp',
             ctaDetails: 'See details',
             trust: [
@@ -149,8 +218,8 @@ export default function Home() {
             faqMore: 'View all →',
             faq: [
               {
-                q: 'Does it work in Morocco?',
-                a: 'Core features (camera/audio) work. Meta AI/app features can vary by country.',
+                q: 'How does it work?',
+                a: 'Pair it to your phone via Bluetooth, complete setup in the companion app, then capture moments hands‑free and use audio/calls easily.',
               },
               {
                 q: 'How do I order?',
@@ -167,7 +236,7 @@ export default function Home() {
             subtitle:
               'Caméra mains libres + audio open‑ear. Choisissez votre modèle ci‑dessous, puis commandez sur WhatsApp — paiement à la livraison.',
             note:
-              'Note: certaines fonctions (Meta app/AI) dépendent du pays/configuration. On reste transparents.',
+              'Note: vous aurez besoin d’un téléphone + Bluetooth + de l’application compagnon pour l’installation et la synchronisation.',
             ctaOrder: 'Commander sur WhatsApp',
             ctaDetails: 'Voir détails',
             trust: [
@@ -193,8 +262,8 @@ export default function Home() {
             faqMore: 'Voir tout →',
             faq: [
               {
-                q: 'Est‑ce que ça marche au Maroc ?',
-                a: "Oui pour les fonctions de base (caméra/audio). Certaines fonctions ‘Meta AI’ peuvent dépendre du pays/app.",
+                q: 'Comment ça marche ?',
+                a: 'Connectez‑les au téléphone via Bluetooth, terminez l’installation dans l’application compagnon, puis utilisez caméra/audio/appels facilement.',
               },
               {
                 q: 'Comment je commande ?',
@@ -410,16 +479,16 @@ export default function Home() {
 
             <div>
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary">
-                {ui.titleProduct}
+                {selectedName}
               </h2>
               <p className="mt-3 text-2xl font-serif font-bold text-primary">{ui.price}</p>
               <p className="mt-2 text-sm">{ui.metaLine}</p>
 
               <div className="mt-6 space-y-3 leading-relaxed">
-                <p className="whitespace-pre-line">{ui.bullets}</p>
+                <p className="whitespace-pre-line">{selectedCopy.bullets}</p>
                 <div className="rounded-2xl border border-border bg-secondary p-4">
-                  <p className="font-semibold text-primary">{ui.importantTitle}</p>
-                  <p className="text-sm mt-1">{ui.importantBody}</p>
+                  <p className="font-semibold text-primary">{selectedCopy.importantTitle}</p>
+                  <p className="text-sm mt-1">{selectedCopy.importantBody}</p>
                 </div>
               </div>
 

@@ -14,6 +14,7 @@ type LandingProduct = {
   // localized names
   name: { ar: string; fr: string; en: string }
   price: number
+  image: string
 }
 
 export default function Home() {
@@ -29,6 +30,7 @@ export default function Home() {
           en: 'Ray‑Ban Meta Wayfarer (RW4006)',
         },
         price: 3000,
+        image: '/images/ray-ban-1.png',
       },
       {
         id: 'second',
@@ -38,6 +40,7 @@ export default function Home() {
           en: 'Product 2 (name coming soon)',
         },
         price: 2600,
+        image: '/images/ray-ban-1.png',
       },
     ],
     []
@@ -50,8 +53,18 @@ export default function Home() {
   const currency = lang === 'ar' ? 'درهم' : lang === 'en' ? 'MAD' : 'DH'
   const priceLabel = `${selected.price.toLocaleString('fr-MA')} ${currency}`
 
-  const waMessage = buildOrderTemplate(lang, { name: selectedName, price: selected.price, currencyLabel: currency })
+  const waMessage = buildOrderTemplate(lang, {
+    name: selectedName,
+    price: selected.price,
+    currencyLabel: currency,
+  })
   const waHref = buildWhatsAppLink(waMessage)
+
+  const orderHrefFor = (p: LandingProduct) => {
+    const name = lang === 'ar' ? p.name.ar : lang === 'en' ? p.name.en : p.name.fr
+    const msg = buildOrderTemplate(lang, { name, price: p.price, currencyLabel: currency })
+    return buildWhatsAppLink(msg)
+  }
 
   const ui =
     lang === 'ar'
@@ -230,23 +243,65 @@ export default function Home() {
                 <span className="block mt-2 text-white/80 text-sm">{ui.note}</span>
               </p>
 
-              {/* Choose product */}
-              <div className="mt-6 inline-flex flex-wrap gap-2 rounded-2xl bg-white/10 p-2 backdrop-blur border border-white/15">
+              {/* Products (2 models) */}
+              <div className="mt-7 grid gap-3 sm:grid-cols-2">
                 {products.map((p) => {
                   const name = lang === 'ar' ? p.name.ar : lang === 'en' ? p.name.en : p.name.fr
                   const isActive = p.id === selectedId
+                  const href = orderHrefFor(p)
                   return (
-                    <button
+                    <div
                       key={p.id}
-                      type="button"
-                      onClick={() => setSelectedId(p.id)}
-                      className={`rounded-xl px-4 py-2 text-sm font-semibold transition ${
-                        isActive ? 'bg-white text-black' : 'text-white hover:bg-white/10'
+                      className={`group rounded-2xl border p-4 backdrop-blur transition cursor-pointer ${
+                        isActive
+                          ? 'border-white/40 bg-white/15'
+                          : 'border-white/15 bg-white/10 hover:bg-white/15'
                       }`}
-                      aria-pressed={isActive}
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => setSelectedId(p.id)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') setSelectedId(p.id)
+                      }}
+                      aria-label={name}
                     >
-                      {name} — {p.price.toLocaleString('fr-MA')} {currency}
-                    </button>
+                      <div className="flex items-center gap-3">
+                        <div className="relative h-12 w-12 shrink-0 rounded-xl bg-white/10 overflow-hidden border border-white/10">
+                          <Image src={p.image} alt={name} fill className="object-contain p-2" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="font-semibold text-white truncate">{name}</p>
+                          <p className="text-sm text-white/80 mt-0.5">
+                            {p.price.toLocaleString('fr-MA')} {currency}
+                            <span className="mx-2 text-white/40">•</span>
+                            {lang === 'ar' ? 'الدفع عند الاستلام' : lang === 'en' ? 'Cash on delivery' : 'Paiement à la livraison'}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="mt-3 flex items-center gap-2">
+                        <a
+                          href={href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground px-4 py-2 text-sm font-semibold hover:opacity-90 transition"
+                        >
+                          {lang === 'ar' ? 'طلب هذا الموديل' : lang === 'en' ? 'Order this model' : 'Commander ce modèle'}
+                        </a>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            setSelectedId(p.id)
+                            document.getElementById('details')?.scrollIntoView({ behavior: 'smooth' })
+                          }}
+                          className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/5 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10 transition"
+                        >
+                          {lang === 'ar' ? 'التفاصيل' : lang === 'en' ? 'Details' : 'Détails'}
+                        </button>
+                      </div>
+                    </div>
                   )
                 })}
               </div>

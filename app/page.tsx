@@ -74,9 +74,9 @@ export default function Home() {
       ? {
           pill: `${priceLabel} • الدفع عند الاستلام • المغرب`,
           titleTop: 'LunetteX',
-          titleProduct: selectedName,
+          titleProduct: 'نظارات ذكية (Meta) بالمغرب',
           subtitle:
-            'كاميرا بلا يدين + صوت Open‑Ear. الطلب عبر واتساب — والدفع عند الاستلام.',
+            'كاميرا بلا يدين + صوت Open‑Ear. اختار الموديل فالأسفل ثم طلب عبر واتساب — والدفع عند الاستلام.',
           note:
             'ملاحظة: بعض المزايا (Meta app/AI) كتبدل حسب الدولة والإعدادات. كنكونو واضحين قبل الطلب.',
           ctaOrder: 'طلب عبر واتساب',
@@ -99,9 +99,7 @@ export default function Home() {
           boxItems: ['النظارات', 'علبة الحماية', 'ثوب التنظيف', 'دليل البداية'],
           compatTitle: 'متوافقة مع',
           compatItems: ['iPhone / Android', 'التطبيق: Meta', 'كنعاونك فالتثبيت فواتساب'],
-          trustProofTitle: 'صور حقيقية',
-          trustProofBody:
-            'هاد الصور من الستوك الحالي. ملي تزيد صور/فيديو حقيقيين ديالك، كنبدلوهم باش نزيدو الثقة.',
+          // trustProof removed
           faqTitle: 'أسئلة شائعة',
           faqMore: 'شوف الكل →',
           faq: [
@@ -121,9 +119,9 @@ export default function Home() {
         ? {
             pill: `${priceLabel} • COD • Morocco`,
             titleTop: 'LunetteX',
-            titleProduct: selectedName,
+            titleProduct: 'Meta Smart Glasses in Morocco',
             subtitle:
-              'Hands‑free camera + open‑ear audio. Order on WhatsApp — pay on delivery.',
+              'Hands‑free camera + open‑ear audio. Choose your model below, then order on WhatsApp — pay on delivery.',
             note:
               'Note: some features (Meta app/AI) depend on country availability and phone settings. We stay transparent.',
             ctaOrder: 'Order on WhatsApp',
@@ -146,9 +144,7 @@ export default function Home() {
             boxItems: ['Glasses', 'Protective case', 'Cleaning cloth', 'Quick start guide'],
             compatTitle: 'Compatibility',
             compatItems: ['iPhone / Android', 'Meta app', 'We guide setup on WhatsApp'],
-            trustProofTitle: 'Real photos',
-            trustProofBody:
-              'These are current stock images. Once you add your own photos/videos, we’ll replace for maximum trust.',
+            // trustProof removed
             faqTitle: 'FAQ',
             faqMore: 'View all →',
             faq: [
@@ -167,9 +163,9 @@ export default function Home() {
         : {
             pill: `${priceLabel} • COD • Maroc`,
             titleTop: 'LunetteX',
-            titleProduct: selectedName,
+            titleProduct: 'Lunettes intelligentes (Meta) au Maroc',
             subtitle:
-              'Caméra mains libres + audio open‑ear. Commande sur WhatsApp — paiement à la livraison.',
+              'Caméra mains libres + audio open‑ear. Choisissez votre modèle ci‑dessous, puis commandez sur WhatsApp — paiement à la livraison.',
             note:
               'Note: certaines fonctions (Meta app/AI) dépendent du pays/configuration. On reste transparents.',
             ctaOrder: 'Commander sur WhatsApp',
@@ -192,9 +188,7 @@ export default function Home() {
             boxItems: ['Lunettes', 'Étui de protection', 'Chiffon de nettoyage', 'Guide de démarrage'],
             compatTitle: 'Compatible avec',
             compatItems: ['iPhone / Android', 'Application Meta', 'Setup guidé sur WhatsApp'],
-            trustProofTitle: 'Photos réelles',
-            trustProofBody:
-              'Images actuelles du stock. Dès que vous avez vos propres photos/vidéos, on remplace pour maximiser la confiance.',
+            // trustProof removed
             faqTitle: 'FAQ',
             faqMore: 'Voir tout →',
             faq: [
@@ -246,68 +240,7 @@ export default function Home() {
                 <span className="block mt-2 text-white/80 text-sm">{ui.note}</span>
               </p>
 
-              {/* Products (2 models) */}
-              <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                {products.map((p) => {
-                  const name = lang === 'ar' ? p.name.ar : lang === 'en' ? p.name.en : p.name.fr
-                  const isActive = p.id === selectedId
-                  const href = orderHrefFor(p)
-                  return (
-                    <div
-                      key={p.id}
-                      className={`group rounded-2xl border p-4 backdrop-blur transition cursor-pointer ${
-                        isActive
-                          ? 'border-white/40 bg-white/15'
-                          : 'border-white/15 bg-white/10 hover:bg-white/15'
-                      }`}
-                      role="button"
-                      tabIndex={0}
-                      onClick={() => setSelectedId(p.id)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') setSelectedId(p.id)
-                      }}
-                      aria-label={name}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="relative h-12 w-12 shrink-0 rounded-xl bg-white/10 overflow-hidden border border-white/10">
-                          <Image src={p.image} alt={name} fill className="object-contain p-2" />
-                        </div>
-                        <div className="min-w-0">
-                          <p className="font-semibold text-white truncate">{name}</p>
-                          <p className="text-sm text-white/80 mt-0.5">
-                            {p.price.toLocaleString('fr-MA')} {currency}
-                            <span className="mx-2 text-white/40">•</span>
-                            {lang === 'ar' ? 'الدفع عند الاستلام' : lang === 'en' ? 'Cash on delivery' : 'Paiement à la livraison'}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="mt-3 flex items-center gap-2">
-                        <a
-                          href={href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground px-4 py-2 text-sm font-semibold hover:opacity-90 transition"
-                        >
-                          {lang === 'ar' ? 'طلب هذا الموديل' : lang === 'en' ? 'Order this model' : 'Commander ce modèle'}
-                        </a>
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation()
-                            setSelectedId(p.id)
-                            document.getElementById('details')?.scrollIntoView({ behavior: 'smooth' })
-                          }}
-                          className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/5 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10 transition"
-                        >
-                          {lang === 'ar' ? 'التفاصيل' : lang === 'en' ? 'Details' : 'Détails'}
-                        </button>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
+              {/* Model picker moved to Details section for a cleaner hero */}
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <a
@@ -344,6 +277,111 @@ export default function Home() {
 
         {/* DETAILS */}
         <section id="details" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+          {/* Model picker (2 models) */}
+          <div className="mb-10">
+            <div className="flex items-end justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground">
+                  {lang === 'ar'
+                    ? 'اختار الموديل'
+                    : lang === 'en'
+                      ? 'Choose a model'
+                      : 'Choisir un modèle'}
+                </p>
+                <p className="mt-1 text-lg font-semibold text-primary">
+                  {lang === 'ar'
+                    ? 'كاينين جوج موديلات — كليكي باش تبدل'
+                    : lang === 'en'
+                      ? 'Two models available — tap to switch'
+                      : 'Deux modèles — cliquez pour changer'}
+                </p>
+              </div>
+              <a
+                href={waHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden sm:inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground px-5 py-2 text-sm font-semibold hover:opacity-90 transition"
+              >
+                {lang === 'ar' ? 'طلب عبر واتساب' : lang === 'en' ? 'Order on WhatsApp' : 'Commander sur WhatsApp'}
+              </a>
+            </div>
+
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              {products.map((p) => {
+                const name = lang === 'ar' ? p.name.ar : lang === 'en' ? p.name.en : p.name.fr
+                const isActive = p.id === selectedId
+                const href = orderHrefFor(p)
+                return (
+                  <div
+                    key={p.id}
+                    className={`group rounded-2xl border p-4 transition cursor-pointer ${
+                      isActive
+                        ? 'border-primary/30 bg-secondary'
+                        : 'border-border bg-card hover:bg-secondary'
+                    }`}
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setSelectedId(p.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') setSelectedId(p.id)
+                    }}
+                    aria-label={name}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="relative h-12 w-12 shrink-0 rounded-xl bg-background overflow-hidden border border-border">
+                        <Image src={p.image} alt={name} fill className="object-contain p-2" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-semibold text-primary truncate">{name}</p>
+                        <p className="text-sm text-muted-foreground mt-0.5">
+                          {p.price.toLocaleString('fr-MA')} {currency}
+                          <span className="mx-2 text-muted-foreground/40">•</span>
+                          {lang === 'ar' ? 'الدفع عند الاستلام' : lang === 'en' ? 'Cash on delivery' : 'Paiement à la livraison'}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="mt-3 flex items-center gap-2">
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground px-4 py-2 text-sm font-semibold hover:opacity-90 transition"
+                      >
+                        {lang === 'ar' ? 'طلب هذا الموديل' : lang === 'en' ? 'Order this model' : 'Commander ce modèle'}
+                      </a>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setSelectedId(p.id)
+                        }}
+                        className={`inline-flex items-center justify-center rounded-full border px-4 py-2 text-sm font-semibold transition ${
+                          isActive
+                            ? 'border-primary/30 bg-primary/5 text-primary'
+                            : 'border-border bg-background text-primary hover:bg-secondary'
+                        }`}
+                      >
+                        {isActive
+                          ? lang === 'ar'
+                            ? 'مختار'
+                            : lang === 'en'
+                              ? 'Selected'
+                              : 'Sélectionné'
+                          : lang === 'ar'
+                            ? 'اختار'
+                            : lang === 'en'
+                              ? 'Select'
+                              : 'Choisir'}
+                      </button>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
           <div className="grid lg:grid-cols-2 gap-10 items-start">
             <div className="rounded-3xl border border-border bg-card p-6">
               <div className="relative aspect-square rounded-2xl overflow-hidden bg-background">
@@ -367,11 +405,7 @@ export default function Home() {
                 ))}
               </div>
 
-              {/* Trust proof */}
-              <div className="mt-5 rounded-2xl border border-border bg-secondary p-4">
-                <p className="font-semibold text-primary">{ui.trustProofTitle}</p>
-                <p className="text-sm mt-1">{ui.trustProofBody}</p>
-              </div>
+              {/* Trust proof removed */}
             </div>
 
             <div>

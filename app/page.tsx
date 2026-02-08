@@ -10,11 +10,12 @@ import { useLang } from '@/components/LanguageProvider'
 import { useMemo, useState } from 'react'
 
 type LandingProduct = {
-  id: 'rw4006' | 'second'
+  id: 'rw4006' | 'wayfarer-essilor'
   // localized names
   name: { ar: string; fr: string; en: string }
   price: number
-  image: string
+  image: string // small card image
+  gallery: string[] // product gallery (details section)
 }
 
 export default function Home() {
@@ -31,16 +32,18 @@ export default function Home() {
         },
         price: 3000,
         image: '/images/ray-ban-1.png',
+        gallery: ['/images/ray-ban-1.png', '/images/ray-ban-2.png', '/images/rayban-3.png'],
       },
       {
-        id: 'second',
+        id: 'wayfarer-essilor',
         name: {
-          ar: 'المنتوج الثاني (الاسم لاحقاً)',
-          fr: 'Produit 2 (nom à venir)',
-          en: 'Product 2 (name coming soon)',
+          ar: 'RAY‑BAN META WAYFARER ESSILORLUXOTTICA',
+          fr: 'RAY‑BAN META WAYFARER ESSILORLUXOTTICA',
+          en: 'RAY‑BAN META WAYFARER ESSILORLUXOTTICA',
         },
         price: 2600,
-        image: '/images/ray-ban-1.png',
+        image: '/images/product2-1.png',
+        gallery: ['/images/product2-1.png', '/images/product2-2.png'],
       },
     ],
     []
@@ -344,15 +347,22 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-10 items-start">
             <div className="rounded-3xl border border-border bg-card p-6">
               <div className="relative aspect-square rounded-2xl overflow-hidden bg-background">
-                <Image src="/images/ray-ban-1.png" alt="RW4006" fill className="object-contain p-8" />
+                <Image
+                  src={selected.gallery[0] || selected.image}
+                  alt={selectedName}
+                  fill
+                  className="object-contain p-8"
+                />
               </div>
-              <div className="mt-4 grid grid-cols-3 gap-2">
-                {['/images/ray-ban-1.png', '/images/ray-ban-2.png', '/images/rayban-3.png'].map((src) => (
+              <div
+                className={`mt-4 grid gap-2 ${selected.gallery.length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}
+              >
+                {selected.gallery.map((src) => (
                   <div
                     key={src}
                     className="relative aspect-square rounded-xl border border-border bg-background overflow-hidden"
                   >
-                    <Image src={src} alt="" fill className="object-contain p-4" />
+                    <Image src={src} alt={selectedName} fill className="object-contain p-4" />
                   </div>
                 ))}
               </div>

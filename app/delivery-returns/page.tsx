@@ -74,7 +74,7 @@ export default function DeliveryReturnsPage() {
                     <li>• كنطلبو: الاسم، المدينة، العنوان كامل + Pin ديال Google Maps إلا أمكن.</li>
                     <li>
                       • فبعض الحالات (مدن بعيدة، ما كاينش تأكيد، أو سوابق) ممكن نطلبو <strong>تأمين 100 درهم</strong> —
-                      كيتحسب من الثمن (المجموع 2800 درهم).
+                      كيتحسب من الثمن الإجمالي.
                     </li>
                   </>
                 ) : lang === 'en' ? (
@@ -82,7 +82,7 @@ export default function DeliveryReturnsPage() {
                     <li>• We ask for: name, city, full address + Google Maps pin (if possible).</li>
                     <li>
                       • For some high‑risk orders (far areas, unconfirmed, previous refusals), we may request a <strong>100 MAD deposit</strong> —
-                      deducted from the total (2800 MAD).
+                      deducted from the total price.
                     </li>
                   </>
                 ) : (
@@ -90,7 +90,7 @@ export default function DeliveryReturnsPage() {
                     <li>• On demande: nom, ville, adresse complète + pin Google Maps si possible.</li>
                     <li>
                       • Pour certaines commandes à risque (zones lointaines, non confirmé, historique), un acompte de <strong>100 DH</strong> peut être demandé —
-                      déduit du total (2800 DH).
+                      déduit du total.
                     </li>
                   </>
                 )}

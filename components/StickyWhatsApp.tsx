@@ -5,14 +5,15 @@ import { MessageCircle } from 'lucide-react'
 import { useLang } from '@/components/LanguageProvider'
 import { t } from '@/lib/i18n'
 
-export function StickyWhatsApp() {
+export function StickyWhatsApp({ message }: { message?: string }) {
   const { lang } = useLang()
   const msg =
-    lang === 'ar'
-      ? 'سلام، بغيت نطلب Ray‑Ban Meta Wayfarer RW4006 ب 2800 درهم (الدفع عند الاستلام).'
+    message ||
+    (lang === 'ar'
+      ? 'سلام، بغيت نطلب Ray‑Ban Meta Wayfarer RW4006 (الدفع عند الاستلام).'
       : lang === 'en'
-        ? 'Hi! I want to order Ray‑Ban Meta Wayfarer RW4006 for 2800 MAD (cash on delivery).'
-        : 'Bonjour, je veux commander Ray‑Ban Meta Wayfarer RW4006 à 2800 DH (paiement à la livraison).'
+        ? 'Hi! I want to order Ray‑Ban Meta Wayfarer RW4006 (cash on delivery).'
+        : 'Bonjour, je veux commander Ray‑Ban Meta Wayfarer RW4006 (paiement à la livraison).')
 
   const href = buildWhatsAppLink(msg)
 

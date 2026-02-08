@@ -7,10 +7,26 @@ export function buildWhatsAppLink(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER_E164}?text=${text}`
 }
 
-export function buildOrderTemplate(lang: Lang) {
+type OrderProduct = {
+  name: string
+  price: number
+  currencyLabel?: string // e.g. "MAD" | "DH" | "درهم"
+}
+
+function formatPriceFrMA(price: number) {
+  return price.toLocaleString('fr-MA')
+}
+
+export function buildOrderTemplate(lang: Lang, product?: OrderProduct) {
+  const name = product?.name || 'Ray‑Ban Meta Wayfarer (RW4006)'
+  const price = product?.price
+
   if (lang === 'ar') {
+    const currency = product?.currencyLabel || 'درهم'
     return [
-      'سلام، بغيت نطلب Ray‑Ban Meta Wayfarer (RW4006) ب 2800 درهم (الدفع عند الاستلام).',
+      price
+        ? `سلام، بغيت نطلب ${name} ب ${formatPriceFrMA(price)} ${currency} (الدفع عند الاستلام).`
+        : `سلام، بغيت نطلب ${name} (الدفع عند الاستلام).`,
       '',
       '— معلومات التأكيد:',
       'الاسم الكامل: ',
@@ -22,8 +38,11 @@ export function buildOrderTemplate(lang: Lang) {
   }
 
   if (lang === 'en') {
+    const currency = product?.currencyLabel || 'MAD'
     return [
-      'Hi! I want to order Ray‑Ban Meta Wayfarer (RW4006) for 2800 MAD (cash on delivery).',
+      price
+        ? `Hi! I want to order ${name} for ${formatPriceFrMA(price)} ${currency} (cash on delivery).`
+        : `Hi! I want to order ${name} (cash on delivery).`,
       '',
       '— Confirmation details:',
       'Full name: ',
@@ -35,8 +54,11 @@ export function buildOrderTemplate(lang: Lang) {
   }
 
   // fr
+  const currency = product?.currencyLabel || 'DH'
   return [
-    'Bonjour, je veux commander Ray‑Ban Meta Wayfarer (RW4006) à 2800 DH (paiement à la livraison).',
+    price
+      ? `Bonjour, je veux commander ${name} à ${formatPriceFrMA(price)} ${currency} (paiement à la livraison).`
+      : `Bonjour, je veux commander ${name} (paiement à la livraison).`,
     '',
     '— Infos de confirmation:',
     'Nom complet: ',

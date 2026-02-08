@@ -7,18 +7,58 @@ import { Footer } from '@/components/Footer'
 import { StickyWhatsApp } from '@/components/StickyWhatsApp'
 import { buildWhatsAppLink, buildOrderTemplate } from '@/lib/whatsapp'
 import { useLang } from '@/components/LanguageProvider'
+import { useMemo, useState } from 'react'
+
+type LandingProduct = {
+  id: 'rw4006' | 'second'
+  // localized names
+  name: { ar: string; fr: string; en: string }
+  price: number
+}
 
 export default function Home() {
   const { lang } = useLang()
 
-  const waHref = buildWhatsAppLink(buildOrderTemplate(lang))
+  const products: LandingProduct[] = useMemo(
+    () => [
+      {
+        id: 'rw4006',
+        name: {
+          ar: 'Ray‑Ban Meta Wayfarer (RW4006)',
+          fr: 'Ray‑Ban Meta Wayfarer (RW4006)',
+          en: 'Ray‑Ban Meta Wayfarer (RW4006)',
+        },
+        price: 3000,
+      },
+      {
+        id: 'second',
+        name: {
+          ar: 'المنتوج الثاني (الاسم لاحقاً)',
+          fr: 'Produit 2 (nom à venir)',
+          en: 'Product 2 (name coming soon)',
+        },
+        price: 2600,
+      },
+    ],
+    []
+  )
+
+  const [selectedId, setSelectedId] = useState<LandingProduct['id']>('rw4006')
+  const selected = products.find((p) => p.id === selectedId) || products[0]
+
+  const selectedName = lang === 'ar' ? selected.name.ar : lang === 'en' ? selected.name.en : selected.name.fr
+  const currency = lang === 'ar' ? 'درهم' : lang === 'en' ? 'MAD' : 'DH'
+  const priceLabel = `${selected.price.toLocaleString('fr-MA')} ${currency}`
+
+  const waMessage = buildOrderTemplate(lang, { name: selectedName, price: selected.price, currencyLabel: currency })
+  const waHref = buildWhatsAppLink(waMessage)
 
   const ui =
     lang === 'ar'
       ? {
-          pill: '2800 درهم • الدفع عند الاستلام • المغرب',
+          pill: `${priceLabel} • الدفع عند الاستلام • المغرب`,
           titleTop: 'LunetteX',
-          titleProduct: 'Ray‑Ban Meta Wayfarer (RW4006)',
+          titleProduct: selectedName,
           subtitle:
             'كاميرا بلا يدين + صوت Open‑Ear. الطلب عبر واتساب — والدفع عند الاستلام.',
           note:
@@ -31,7 +71,7 @@ export default function Home() {
             { t: 'سياسة واضحة', d: 'إرجاع/استبدال بسيط.' },
           ],
           detailsTitle: 'التفاصيل',
-          price: '2800 درهم',
+          price: priceLabel,
           metaLine: 'الدفع عند الاستلام • تأكيد فالواتساب',
           bullets:
             '• كاميرا مدمجة للتصوير بلا يدين.\n• صوت Open‑Ear باش تسمع بلا ما تعزل على اللي داير بك.\n• شكل Wayfarer الكلاسيكي.',
@@ -63,9 +103,9 @@ export default function Home() {
         }
       : lang === 'en'
         ? {
-            pill: '2800 MAD • COD • Morocco',
+            pill: `${priceLabel} • COD • Morocco`,
             titleTop: 'LunetteX',
-            titleProduct: 'Ray‑Ban Meta Wayfarer (RW4006)',
+            titleProduct: selectedName,
             subtitle:
               'Hands‑free camera + open‑ear audio. Order on WhatsApp — pay on delivery.',
             note:
@@ -78,7 +118,7 @@ export default function Home() {
               { t: 'Clear policy', d: 'Simple returns/exchange.' },
             ],
             detailsTitle: 'Details',
-            price: '2800 MAD',
+            price: priceLabel,
             metaLine: 'Cash on delivery • WhatsApp confirmation',
             bullets:
               '• Built‑in camera for hands‑free capture.\n• Open‑ear audio so you stay aware.\n• Iconic Wayfarer design.',
@@ -109,9 +149,9 @@ export default function Home() {
             ],
           }
         : {
-            pill: '2800 DH • COD • Maroc',
+            pill: `${priceLabel} • COD • Maroc`,
             titleTop: 'LunetteX',
-            titleProduct: 'Ray‑Ban Meta Wayfarer (RW4006)',
+            titleProduct: selectedName,
             subtitle:
               'Caméra mains libres + audio open‑ear. Commande sur WhatsApp — paiement à la livraison.',
             note:
@@ -124,7 +164,7 @@ export default function Home() {
               { t: 'Politique claire', d: 'Retours/échanges simples.' },
             ],
             detailsTitle: 'Détails',
-            price: '2800 DH',
+            price: priceLabel,
             metaLine: 'Paiement à la livraison • Confirmation WhatsApp',
             bullets:
               '• Caméra intégrée pour capturer des moments en mains libres.\n• Audio open‑ear pour écouter sans isoler.\n• Design Wayfarer iconique.',
@@ -189,6 +229,27 @@ export default function Home() {
                 {ui.subtitle}
                 <span className="block mt-2 text-white/80 text-sm">{ui.note}</span>
               </p>
+
+              {/* Choose product */}
+              <div className="mt-6 inline-flex flex-wrap gap-2 rounded-2xl bg-white/10 p-2 backdrop-blur border border-white/15">
+                {products.map((p) => {
+                  const name = lang === 'ar' ? p.name.ar : lang === 'en' ? p.name.en : p.name.fr
+                  const isActive = p.id === selectedId
+                  return (
+                    <button
+                      key={p.id}
+                      type="button"
+                      onClick={() => setSelectedId(p.id)}
+                      className={`rounded-xl px-4 py-2 text-sm font-semibold transition ${
+                        isActive ? 'bg-white text-black' : 'text-white hover:bg-white/10'
+                      }`}
+                      aria-pressed={isActive}
+                    >
+                      {name} — {p.price.toLocaleString('fr-MA')} {currency}
+                    </button>
+                  )
+                })}
+              </div>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <a
@@ -344,7 +405,7 @@ export default function Home() {
       </main>
 
       <Footer />
-      <StickyWhatsApp />
+      <StickyWhatsApp message={waMessage} />
     </>
   )
 }

@@ -16,7 +16,7 @@ type Dict = Record<string, string>
 const fr: Dict = {
   brand: 'LunetteX',
   productName: 'Ray‑Ban Meta Wayfarer (RW4006)',
-  price: '2800 DH',
+  price: '3000 DH',
   cod: 'Paiement à la livraison (COD)',
   deliveryFast: 'Livraison rapide au Maroc',
   whatsappCta: 'Commander sur WhatsApp',
@@ -43,7 +43,7 @@ const fr: Dict = {
 const ar: Dict = {
   brand: 'LunetteX',
   productName: 'Ray‑Ban Meta Wayfarer (RW4006)',
-  price: '2800 درهم',
+  price: '3000 درهم',
   cod: 'الدفع عند الاستلام',
   deliveryFast: 'توصيل سريع داخل المغرب',
   whatsappCta: 'طلب عبر واتساب',
@@ -70,7 +70,7 @@ const ar: Dict = {
 const en: Dict = {
   brand: 'LunetteX',
   productName: 'Ray‑Ban Meta Wayfarer (RW4006)',
-  price: '2800 MAD',
+  price: '3000 MAD',
   cod: 'Cash on delivery',
   deliveryFast: 'Fast delivery in Morocco',
   whatsappCta: 'Order on WhatsApp',

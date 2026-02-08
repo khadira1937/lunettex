@@ -27,8 +27,29 @@ export default async function RootLayout({
   const lang: Lang = isLang(cookieLang) ? cookieLang : DEFAULT_LANG
   const dir = getDir(lang)
 
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-MHTZHRM9L6'
+
   return (
     <html lang={lang} dir={dir} className={`${_inter.variable} ${_fraunces.variable}`}>
+      <head>
+        {gaId ? (
+          <>
+            <Script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4" strategy="afterInteractive">
+              {`
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);} 
+  gtag('js', new Date());
+  gtag('config', '${gaId}');
+              `}
+            </Script>
+          </>
+        ) : null}
+      </head>
       <body className="font-sans antialiased bg-background text-foreground">
         {process.env.NEXT_PUBLIC_META_PIXEL_ID ? (
           <>

@@ -9,6 +9,31 @@ import { buildWhatsAppLink, buildOrderTemplate } from '@/lib/whatsapp'
 import { useLang } from '@/components/LanguageProvider'
 import { useMemo, useState } from 'react'
 
+function trackWhatsAppLead(payload?: { productName?: string; valueMad?: number }) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const w = window as any
+  if (typeof w.fbq === 'function') {
+    w.fbq('track', 'Lead', {
+      channel: 'whatsapp',
+      content_name: payload?.productName,
+      value: payload?.valueMad,
+      currency: 'MAD',
+    })
+    w.fbq('trackCustom', 'WhatsAppClick', {
+      productName: payload?.productName,
+      valueMad: payload?.valueMad,
+    })
+  }
+  if (typeof w.gtag === 'function') {
+    w.gtag('event', 'whatsapp_click', {
+      event_category: 'engagement',
+      item_name: payload?.productName,
+      value: payload?.valueMad,
+      currency: 'MAD',
+    })
+  }
+}
+
 type LandingProduct = {
   id: 'rw4006' | 'wayfarer-essilor'
   // localized names
@@ -315,6 +340,7 @@ export default function Home() {
                 <a
                   id="order"
                   href={waHref}
+                  onClick={() => trackWhatsAppLead({ productName: selectedName, valueMad: selected.price })}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex justify-center items-center rounded-full bg-accent text-accent-foreground px-7 py-3 font-semibold hover:opacity-90 transition"
@@ -367,6 +393,7 @@ export default function Home() {
               </div>
               <a
                 href={waHref}
+                onClick={() => trackWhatsAppLead({ productName: selectedName, valueMad: selected.price })}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden sm:inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground px-5 py-2 text-sm font-semibold hover:opacity-90 transition"
@@ -415,7 +442,10 @@ export default function Home() {
                         href={href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          trackWhatsAppLead({ productName: name, valueMad: p.price })
+                        }}
                         className="inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground px-4 py-2 text-sm font-semibold hover:opacity-90 transition"
                       >
                         {lang === 'ar' ? 'طلب هذا الموديل' : lang === 'en' ? 'Order this model' : 'Commander ce modèle'}
@@ -495,6 +525,7 @@ export default function Home() {
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <a
                   href={waHref}
+                  onClick={() => trackWhatsAppLead({ productName: selectedName, valueMad: selected.price })}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex justify-center items-center rounded-full bg-accent text-accent-foreground px-7 py-3 font-semibold hover:opacity-90 transition"

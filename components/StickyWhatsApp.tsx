@@ -18,11 +18,19 @@ export function StickyWhatsApp({ message }: { message?: string }) {
   const href = buildWhatsAppLink(msg)
 
   const onClick = () => {
-    // Meta Pixel custom event (if pixel is installed)
+    // Track WhatsApp intent (so we can optimize ads even without on-site checkout)
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const w = window as any
     if (typeof w.fbq === 'function') {
+      // Standard event (works well for optimization)
+      w.fbq('track', 'Lead', { channel: 'whatsapp' })
+      // Custom event (for custom conversions / reporting)
       w.fbq('trackCustom', 'WhatsAppClick')
+    }
+
+    // Optional: GA4 click tracking
+    if (typeof w.gtag === 'function') {
+      w.gtag('event', 'whatsapp_click', { event_category: 'engagement' })
     }
   }
 

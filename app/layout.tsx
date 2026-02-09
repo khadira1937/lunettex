@@ -28,6 +28,8 @@ export default async function RootLayout({
   const dir = getDir(lang)
 
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-MHTZHRM9L6'
+  // Meta Pixel (fallback to the verified Pixel ID if env var is not set)
+  const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || '1593556348555100'
 
   return (
     <html lang={lang} dir={dir} className={`${_inter.variable} ${_fraunces.variable}`}>
@@ -51,7 +53,7 @@ export default async function RootLayout({
         ) : null}
       </head>
       <body className="font-sans antialiased bg-background text-foreground">
-        {process.env.NEXT_PUBLIC_META_PIXEL_ID ? (
+        {metaPixelId ? (
           <>
             <Script id="meta-pixel" strategy="afterInteractive">
               {`
@@ -63,7 +65,7 @@ export default async function RootLayout({
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '${process.env.NEXT_PUBLIC_META_PIXEL_ID}');
+  fbq('init', '${metaPixelId}');
   fbq('track', 'PageView');
 `}
             </Script>
@@ -74,7 +76,7 @@ export default async function RootLayout({
                 width="1"
                 style={{ display: 'none' }}
                 alt=""
-                src={`https://www.facebook.com/tr?id=${process.env.NEXT_PUBLIC_META_PIXEL_ID}&ev=PageView&noscript=1`}
+                src={`https://www.facebook.com/tr?id=${metaPixelId}&ev=PageView&noscript=1`}
               />
             </noscript>
           </>

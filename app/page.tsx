@@ -52,7 +52,7 @@ export default function Home() {
         id: 'rw4006',
         name: {
           ar: 'نظارات Ray‑Ban Meta Wayfarer Gen 1 (RW4006)',
-          fr: 'Lunettes connectées Ray‑Ban Meta Wayfarer Gen 1 (RW4006)',
+          fr: 'Lunettes connectées Ray‑Ban Meta Wayfarer Gen 1 au Maroc',
           en: 'Ray‑Ban Meta Wayfarer Gen 1 Smart Glasses (RW4006)',
         },
         price: 3000,
@@ -191,7 +191,7 @@ export default function Home() {
   const rw4006Description = useMemo(() => {
     return {
       fr: {
-        title: 'Description — Lunettes connectées Ray‑Ban Meta Wayfarer Gen 1 (Meta AI) au Maroc',
+        title: 'Description — Lunettes connectées Ray‑Ban Meta Wayfarer Gen 1 au Maroc',
         intro:
           'Découvrez une nouvelle façon de capturer, écouter et communiquer — sans sortir votre smartphone. Les Ray‑Ban Meta Wayfarer Gen 1 combinent le style iconique Wayfarer avec une caméra mains libres, un son open‑ear et l’assistant vocal Meta AI.',
         sections: [

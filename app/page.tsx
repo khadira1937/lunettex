@@ -79,9 +79,10 @@ export default function Home() {
 
   const [activeImage, setActiveImage] = useState<string>(selected.gallery[0] || selected.image)
 
-  const viewersNow = useMemo(() => {
-    // lightweight “social proof” like competitor sites (kept within a plausible range)
-    return Math.floor(9 + Math.random() * 7) // 9..15
+  // Social proof counter: keep SSR/CSR consistent to avoid hydration mismatch
+  const [viewersNow, setViewersNow] = useState<number>(12)
+  useEffect(() => {
+    setViewersNow(Math.floor(9 + Math.random() * 7)) // 9..15
   }, [])
 
   useEffect(() => {

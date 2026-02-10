@@ -536,6 +536,80 @@ export default function Home() {
                 })}
               </div>
 
+              {/* Social proof + logistics (below gallery, like competitor UI) */}
+              <div className="mt-5 space-y-3">
+                <div className="rounded-2xl border border-border bg-secondary px-4 py-3 text-sm">
+                  <span className="font-semibold text-primary">👁️ {viewersNow}</span>{' '}
+                  {lang === 'ar'
+                    ? 'شخص كيشوف هاد المنتوج دابا!'
+                    : lang === 'en'
+                      ? 'people are viewing this product right now!'
+                      : 'personnes regardent ce produit maintenant !'}
+                </div>
+
+                <div className="rounded-2xl border border-border bg-card p-4">
+                  <p className="font-semibold text-primary">
+                    {lang === 'ar' ? '🚚 التوصيل' : lang === 'en' ? '🚚 Delivery' : '🚚 Livraison'}
+                  </p>
+
+                  <div className="mt-3 flex items-center gap-3 rounded-xl border border-border bg-background px-4 py-3">
+                    <Image src="/images/amana-logo.png" alt="AMANA" width={64} height={24} className="h-6 w-auto" />
+                    <div className="min-w-0">
+                      <p className="font-semibold text-primary">
+                        {lang === 'ar'
+                          ? 'التوصيل مع أمانة'
+                          : lang === 'en'
+                            ? 'Delivery with AMANA'
+                            : 'Livraison avec AMANA'}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {lang === 'ar'
+                          ? 'تقدير: من يوم حتى جوج أيام'
+                          : lang === 'en'
+                            ? 'Estimated: 1–2 days'
+                            : 'Estimé: 1–2 jours'}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
+                    <div className="rounded-xl border border-border bg-background px-4 py-3">
+                      <p className="font-semibold text-primary">
+                        {lang === 'ar' ? '🛡️ ضمان' : lang === 'en' ? '🛡️ Warranty' : '🛡️ Garantie'}
+                      </p>
+                      <p className="text-muted-foreground">
+                        {lang === 'ar' ? '7 أيام' : lang === 'en' ? '7 days' : '7 jours'}
+                      </p>
+                    </div>
+                    <div className="rounded-xl border border-border bg-background px-4 py-3">
+                      <p className="font-semibold text-primary">
+                        {lang === 'ar' ? '🔁 إرجاع/استبدال' : lang === 'en' ? '🔁 Returns/exchange' : '🔁 Retours/échange'}
+                      </p>
+                      <p className="text-muted-foreground">
+                        {lang === 'ar' ? 'داخل 7 أيام' : lang === 'en' ? 'Within 7 days' : 'Sous 7 jours'}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-3 rounded-xl border border-border bg-background px-4 py-3 text-sm">
+                    <p className="font-semibold text-primary">
+                      {lang === 'ar'
+                        ? '💳 طرق الأداء'
+                        : lang === 'en'
+                          ? '💳 Payment methods'
+                          : '💳 Méthodes de paiement'}
+                    </p>
+                    <p className="text-muted-foreground mt-1">
+                      {lang === 'ar'
+                        ? 'الدفع عند الاستلام — وكنقبلو تحويل بنكي CIH.'
+                        : lang === 'en'
+                          ? 'Pay on delivery — we also accept CIH bank transfer.'
+                          : 'Paiement à la livraison — on accepte aussi virement CIH.'}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               {/* Trust proof removed */}
             </div>
 
@@ -546,107 +620,11 @@ export default function Home() {
               <p className="mt-3 text-2xl font-serif font-bold text-primary">{ui.price}</p>
               <p className="mt-2 text-sm">{ui.metaLine}</p>
 
-              {/* Social proof + logistics (better conversion than a long text block) */}
-              <div className="mt-5 space-y-3">
-                <div className="rounded-2xl border border-border bg-secondary px-4 py-3 text-sm">
-                  <span className="font-semibold text-primary">{viewersNow}</span>{' '}
-                  {lang === 'ar'
-                    ? 'شخص كيشوف هاد المنتوج دابا!'
-                    : lang === 'en'
-                      ? 'people are viewing this product right now!'
-                      : 'personnes regardent ce produit maintenant !'}
-                </div>
 
-                <div className="rounded-2xl border border-border bg-card p-4">
-                  <p className="font-semibold text-primary">
-                    {lang === 'ar' ? 'التوصيل والدفع' : lang === 'en' ? 'Delivery & payment' : 'Livraison & paiement'}
-                  </p>
-                  <div className="mt-3 space-y-3 text-sm">
-                    <div className="flex items-center justify-between gap-4 rounded-xl border border-border bg-background px-4 py-3">
-                      <div>
-                        <p className="font-semibold text-primary">
-                          {lang === 'ar'
-                            ? 'التوصيل داخل الرباط'
-                            : lang === 'en'
-                              ? 'Delivery in Rabat'
-                              : 'Livraison à Rabat'}
-                        </p>
-                        <p className="text-muted-foreground">
-                          {lang === 'ar'
-                            ? 'تقدير: 12 ساعة'
-                            : lang === 'en'
-                              ? 'Estimated: 12 hours'
-                              : 'Estimé: 12 heures'}
-                        </p>
-                      </div>
-                      <p className="font-semibold text-primary">20 DH</p>
-                    </div>
-
-                    <div className="flex items-center justify-between gap-4 rounded-xl border border-border bg-background px-4 py-3">
-                      <div>
-                        <p className="font-semibold text-primary">
-                          {lang === 'ar'
-                            ? 'التوصيل مع أمانة'
-                            : lang === 'en'
-                              ? 'Delivery with AMANA'
-                              : 'Livraison avec AMANA'}
-                        </p>
-                        <p className="text-muted-foreground">
-                          {lang === 'ar'
-                            ? 'تقدير: من يوم حتى جوج أيام'
-                            : lang === 'en'
-                              ? 'Estimated: 1–2 days'
-                              : 'Estimé: 1–2 jours'}
-                        </p>
-                      </div>
-                      <p className="font-semibold text-primary">40 DH</p>
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 gap-3">
-                      <div className="rounded-xl border border-border bg-background px-4 py-3">
-                        <p className="font-semibold text-primary">
-                          {lang === 'ar' ? 'ضمان' : lang === 'en' ? 'Warranty' : 'Garantie'}
-                        </p>
-                        <p className="text-muted-foreground">
-                          {lang === 'ar' ? '7 أيام' : lang === 'en' ? '7 days' : '7 jours'}
-                        </p>
-                      </div>
-                      <div className="rounded-xl border border-border bg-background px-4 py-3">
-                        <p className="font-semibold text-primary">
-                          {lang === 'ar' ? 'إرجاع/استبدال' : lang === 'en' ? 'Returns/exchange' : 'Retours/échange'}
-                        </p>
-                        <p className="text-muted-foreground">
-                          {lang === 'ar' ? 'داخل 7 أيام' : lang === 'en' ? 'Within 7 days' : 'Sous 7 jours'}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="rounded-xl border border-border bg-background px-4 py-3">
-                      <p className="font-semibold text-primary">
-                        {lang === 'ar'
-                          ? 'طرق الأداء'
-                          : lang === 'en'
-                            ? 'Payment methods'
-                            : 'Méthodes de paiement'}
-                      </p>
-                      <p className="text-muted-foreground mt-1">
-                        {lang === 'ar'
-                          ? 'الدفع عند الاستلام (كيجمعها الموزّع) — وكنقبلو تحويل بنكي CIH.'
-                          : lang === 'en'
-                            ? 'Pay on delivery (collected by the courier) — we also accept CIH bank transfer.'
-                            : 'Paiement à la livraison (collecté par le livreur) — on accepte aussi virement CIH.'}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* Social proof moved below gallery */}
 
               <div className="mt-6 space-y-3 leading-relaxed">
                 <p className="whitespace-pre-line">{selectedCopy.bullets}</p>
-                <div className="rounded-2xl border border-border bg-secondary p-4">
-                  <p className="font-semibold text-primary">{selectedCopy.importantTitle}</p>
-                  <p className="text-sm mt-1">{selectedCopy.importantBody}</p>
-                </div>
               </div>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3">

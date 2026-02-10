@@ -60,39 +60,47 @@ export async function POST(req: Request) {
     const resendKey = process.env.RESEND_API_KEY
     const toEmail = process.env.ORDERS_TO_EMAIL || 'lunettexstore@gmail.com'
 
+    let emailSent = false
     if (resendKey) {
-      const resend = new Resend(resendKey)
-      const subject = `Nouvelle commande — ${parsed.data.productName} (x${parsed.data.quantity})`
-      const text = [
-        'Nouvelle commande reçue:',
-        '',
-        `Produit: ${parsed.data.productName}`,
-        `ID produit: ${parsed.data.productId}`,
-        `Quantité: ${parsed.data.quantity}`,
-        `Prix (MAD): ${parsed.data.priceMad}`,
-        `Paiement: Paiement à la livraison`,
-        '',
-        `Nom: ${parsed.data.fullName}`,
-        `Téléphone: ${parsed.data.phone}`,
-        `E-mail: ${parsed.data.email || '-'}`,
-        `Ville: ${parsed.data.city}`,
-        `Adresse: ${parsed.data.address}`,
-        '',
-        `Order ID: ${data.id}`,
-        `Created: ${data.created_at}`,
-      ].join('\n')
+      try {
+        const resend = new Resend(resendKey)
+        const subject = `Nouvelle commande — ${parsed.data.productName} (x${parsed.data.quantity})`
+        const text = [
+          'Nouvelle commande reçue:',
+          '',
+          `Produit: ${parsed.data.productName}`,
+          `ID produit: ${parsed.data.productId}`,
+          `Quantité: ${parsed.data.quantity}`,
+          `Prix (MAD): ${parsed.data.priceMad}`,
+          `Paiement: Paiement à la livraison`,
+          '',
+          `Nom: ${parsed.data.fullName}`,
+          `Téléphone: ${parsed.data.phone}`,
+          `E-mail: ${parsed.data.email || '-'}`,
+          `Ville: ${parsed.data.city}`,
+          `Adresse: ${parsed.data.address}`,
+          '',
+          `Order ID: ${data.id}`,
+          `Created: ${data.created_at}`,
+        ].join('\n')
 
-      await resend.emails.send({
-        from: 'LunetteX <orders@resend.dev>',
-        to: [toEmail],
-        subject,
-        text,
-        replyTo: parsed.data.email ? parsed.data.email : undefined,
-      })
+        await resend.emails.send({
+          from: 'LunetteX <orders@resend.dev>',
+          to: [toEmail],
+          subject,
+          text,
+          replyTo: parsed.data.email ? parsed.data.email : undefined,
+        })
+        emailSent = true
+      } catch (err) {
+        // Don't fail the order if email sending fails.
+        console.error('Resend email failed', err)
+      }
     }
 
-    return NextResponse.json({ ok: true, id: data.id })
-  } catch {
+    return NextResponse.json({ ok: true, id: data.id, emailSent })
+  } catch (err) {
+    console.error('Order API failed', err)
     return NextResponse.json({ ok: false, error: 'server_error' }, { status: 500 })
   }
 }

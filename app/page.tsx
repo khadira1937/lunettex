@@ -875,8 +875,17 @@ export default function Home() {
                   {ui.ctaOrder}
                 </a>
                 <a
-                  href="/delivery-returns"
+                  href={`/checkout?product=${selectedId}`}
                   className="inline-flex justify-center items-center rounded-full border border-border px-7 py-3 font-semibold hover:bg-secondary transition"
+                >
+                  {lang === 'ar' ? 'شراء الآن' : lang === 'en' ? 'Buy now' : 'Acheter maintenant'}
+                </a>
+              </div>
+
+              <div className="mt-3">
+                <a
+                  href="/delivery-returns"
+                  className="text-sm font-semibold text-primary underline underline-offset-4 hover:text-accent transition"
                 >
                   {ui.deliveryReturns}
                 </a>

@@ -187,6 +187,134 @@ export default function Home() {
       ? modelCopy.rw4006[lang]
       : modelCopy['wayfarer-essilor'][lang]
 
+  const rw4006Description = useMemo(() => {
+    return {
+      fr: {
+        title: 'Description — Ray‑Ban Meta Wayfarer Gen 1 (Meta AI) au Maroc',
+        intro:
+          'Découvrez une nouvelle façon de capturer, écouter et communiquer — sans sortir votre smartphone. Les Ray‑Ban Meta Wayfarer Gen 1 combinent le style iconique Wayfarer avec une caméra mains libres, un son open‑ear et l’assistant vocal Meta AI.',
+        sections: [
+          {
+            h: 'Fonctionnalités intelligentes (Meta AI)',
+            items: [
+              '🗣️ Commandes vocales: dites “Hey Meta…” pour lancer une action en quelques secondes.',
+              '👀 Meta‑Autour: apprenez‑en plus sur ce que vous voyez (objets, lieux, monuments).',
+              '🌍 Traduction visuelle: traduisez rapidement un panneau ou un texte.',
+              '🎙️ Messages & appels: restez connecté avec un usage mains libres.',
+              '🎧 Musique & podcasts: profitez du son open‑ear via les haut‑parleurs intégrés.',
+              '🎥 Capture instantanée: photo/vidéo en un geste, parfait pour créateurs de contenu.',
+            ],
+          },
+          {
+            h: 'Détails techniques (RW4006)',
+            items: [
+              '📸 Photos: 3024 × 4032 px',
+              '🎬 Vidéo: 1440 × 1920 px @ 30 fps',
+              '🔊 Audio: 2 haut‑parleurs open‑ear + 5 microphones',
+              '💾 Stockage: 32 Go (≈ 500 photos ou ≈ 100 vidéos)',
+              '📶 Connectivité: Wi‑Fi 6 + Bluetooth 5.2',
+              '🔋 Autonomie: jusqu’à 4 heures',
+              '📱 Compatibilité: iOS / Android 10+',
+              '🕶️ Style: noir brillant, verres G‑15 verts',
+            ],
+          },
+          {
+            h: 'Pourquoi l’acheter chez nous ?',
+            items: [
+              '✅ Prix plus avantageux',
+              '✅ Paiement à la livraison au Maroc',
+              '✅ Livraison via AMANA',
+              '✅ Retour/échange sous 7 jours',
+              '✅ Support WhatsApp rapide (confirmation avant envoi)',
+            ],
+          },
+        ],
+      },
+      en: {
+        title: 'Description — Ray‑Ban Meta Wayfarer Gen 1 (Meta AI) in Morocco',
+        intro:
+          'A new way to capture, listen and communicate — without taking out your phone. Ray‑Ban Meta Wayfarer Gen 1 combines the iconic Wayfarer look with hands‑free camera, open‑ear audio and the Meta AI voice assistant.',
+        sections: [
+          {
+            h: 'Smart features (Meta AI)',
+            items: [
+              '🗣️ Voice commands: say “Hey Meta…” to trigger actions instantly.',
+              '👀 Look‑and‑learn: get info about what you see (objects, places, landmarks).',
+              '🌍 Visual translation: quickly translate a sign or text.',
+              '🎙️ Messages & calls: stay connected hands‑free.',
+              '🎧 Music & podcasts: open‑ear sound from built‑in speakers.',
+              '🎥 Quick capture: photo/video in a tap — ideal for creators.',
+            ],
+          },
+          {
+            h: 'Tech specs (RW4006)',
+            items: [
+              '📸 Photos: 3024 × 4032 px',
+              '🎬 Video: 1440 × 1920 px @ 30 fps',
+              '🔊 Audio: 2 open‑ear speakers + 5 microphones',
+              '💾 Storage: 32 GB (≈ 500 photos or ≈ 100 videos)',
+              '📶 Connectivity: Wi‑Fi 6 + Bluetooth 5.2',
+              '🔋 Battery: up to 4 hours',
+              '📱 Compatibility: iOS / Android 10+',
+              '🕶️ Style: glossy black, green G‑15 lenses',
+            ],
+          },
+          {
+            h: 'Why buy from us?',
+            items: [
+              '✅ Better price',
+              '✅ Pay on delivery in Morocco',
+              '✅ Delivery via AMANA',
+              '✅ Returns/exchange within 7 days',
+              '✅ Fast WhatsApp support (confirmation before shipping)',
+            ],
+          },
+        ],
+      },
+      ar: {
+        title: 'الوصف — Ray‑Ban Meta Wayfarer Gen 1 (Meta AI) فالمغرب',
+        intro:
+          'طريقة جديدة باش تصوّر وتسمع وتبقى متاصل — بلا ما تخرج التليفون. Ray‑Ban Meta Wayfarer Gen 1 كاتجمع ستايل Wayfarer الكلاسيكي مع كاميرا بلا يدين، صوت open‑ear، والمساعد الصوتي Meta AI.',
+        sections: [
+          {
+            h: 'المزايا الذكية (Meta AI)',
+            items: [
+              '🗣️ أوامر صوتية: غير قول “Hey Meta…” وبدّل الخدمة بسرعة.',
+              '👀 Meta‑Autour: كيعطيك معلومات على اللي كتشوف (أشياء/بلايص/معالم).',
+              '🌍 ترجمة فورية: ترجم لوحات ولا نصوص بسرعة.',
+              '🎙️ رسائل ومكالمات: تواصل بلا يدين.',
+              '🎧 موسيقى وبودكاست: صوت open‑ear من السبيكرات المدمجين.',
+              '🎥 تصوير سريع: صور/فيديو بكليكة — زوين للي كيدير المحتوى.',
+            ],
+          },
+          {
+            h: 'المواصفات التقنية (RW4006)',
+            items: [
+              '📸 الصور: 3024 × 4032',
+              '🎬 الفيديو: 1440 × 1920 @ 30fps',
+              '🔊 الصوت: جوج سبيكرات open‑ear + 5 مايكات',
+              '💾 الذاكرة: 32GB (حوالي 500 صورة ولا 100 فيديو)',
+              '📶 الاتصال: Wi‑Fi 6 + Bluetooth 5.2',
+              '🔋 البطارية: حتى لـ 4 ساعات',
+              '📱 متوافقة: iOS / Android 10+',
+              '🕶️ الستايل: كحل لامع، عدسات خضر G‑15',
+            ],
+          },
+          {
+            h: 'علاش تشريها من عندنا؟',
+            items: [
+              '✅ ثمن مزيان',
+              '✅ الدفع عند الاستلام فالمغرب',
+              '✅ التوصيل مع AMANA',
+              '✅ إرجاع/استبدال داخل 7 أيام',
+              '✅ دعم سريع فالواتساب (تأكيد قبل الإرسال)',
+            ],
+          },
+        ],
+      },
+    } as const
+  }, [])
+
   const ui =
     lang === 'ar'
       ? {
@@ -620,6 +748,44 @@ export default function Home() {
 
               <div className="mt-6 space-y-3 leading-relaxed">
                 <p className="whitespace-pre-line">{selectedCopy.bullets}</p>
+
+                {/* Product description (only for RW4006 for now) */}
+                {selectedId === 'rw4006' && (
+                  <div className="mt-5 rounded-3xl border border-border bg-card p-6">
+                    <h3 className="text-xl md:text-2xl font-serif font-bold text-primary">
+                      {(lang === 'ar'
+                        ? rw4006Description.ar.title
+                        : lang === 'en'
+                          ? rw4006Description.en.title
+                          : rw4006Description.fr.title) as string}
+                    </h3>
+                    <p className="mt-3 text-sm md:text-base leading-relaxed text-muted-foreground">
+                      {(lang === 'ar'
+                        ? rw4006Description.ar.intro
+                        : lang === 'en'
+                          ? rw4006Description.en.intro
+                          : rw4006Description.fr.intro) as string}
+                    </p>
+
+                    <div className="mt-6 space-y-6">
+                      {(lang === 'ar'
+                        ? rw4006Description.ar.sections
+                        : lang === 'en'
+                          ? rw4006Description.en.sections
+                          : rw4006Description.fr.sections
+                      ).map((sec) => (
+                        <div key={sec.h}>
+                          <p className="font-semibold text-primary">{sec.h}</p>
+                          <ul className="mt-3 space-y-2 text-sm leading-relaxed">
+                            {sec.items.map((it) => (
+                              <li key={it}>{it}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3">

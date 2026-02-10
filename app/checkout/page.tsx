@@ -168,7 +168,7 @@ export default function CheckoutPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           productId: product.id,
-          productName: product.name,
+          productName: productName,
           priceMad: product.priceMad,
           quantity,
           fullName,

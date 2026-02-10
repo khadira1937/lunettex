@@ -748,44 +748,6 @@ export default function Home() {
 
               <div className="mt-6 space-y-3 leading-relaxed">
                 <p className="whitespace-pre-line">{selectedCopy.bullets}</p>
-
-                {/* Product description (only for RW4006 for now) */}
-                {selectedId === 'rw4006' && (
-                  <div className="mt-5 rounded-3xl border border-border bg-card p-6">
-                    <h3 className="text-xl md:text-2xl font-serif font-bold text-primary">
-                      {(lang === 'ar'
-                        ? rw4006Description.ar.title
-                        : lang === 'en'
-                          ? rw4006Description.en.title
-                          : rw4006Description.fr.title) as string}
-                    </h3>
-                    <p className="mt-3 text-sm md:text-base leading-relaxed text-muted-foreground">
-                      {(lang === 'ar'
-                        ? rw4006Description.ar.intro
-                        : lang === 'en'
-                          ? rw4006Description.en.intro
-                          : rw4006Description.fr.intro) as string}
-                    </p>
-
-                    <div className="mt-6 space-y-6">
-                      {(lang === 'ar'
-                        ? rw4006Description.ar.sections
-                        : lang === 'en'
-                          ? rw4006Description.en.sections
-                          : rw4006Description.fr.sections
-                      ).map((sec) => (
-                        <div key={sec.h}>
-                          <p className="font-semibold text-primary">{sec.h}</p>
-                          <ul className="mt-3 space-y-2 text-sm leading-relaxed">
-                            {sec.items.map((it) => (
-                              <li key={it}>{it}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
@@ -843,6 +805,44 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {/* Product description (only for RW4006 for now) */}
+          {selectedId === 'rw4006' && (
+            <div className="mt-12 rounded-3xl border border-border bg-card p-6 md:p-8">
+              <h3 className="text-2xl md:text-3xl font-serif font-bold text-primary">
+                {(lang === 'ar'
+                  ? rw4006Description.ar.title
+                  : lang === 'en'
+                    ? rw4006Description.en.title
+                    : rw4006Description.fr.title) as string}
+              </h3>
+              <p className="mt-3 text-sm md:text-base leading-relaxed text-muted-foreground">
+                {(lang === 'ar'
+                  ? rw4006Description.ar.intro
+                  : lang === 'en'
+                    ? rw4006Description.en.intro
+                    : rw4006Description.fr.intro) as string}
+              </p>
+
+              <div className="mt-7 grid gap-6 lg:grid-cols-2">
+                {(lang === 'ar'
+                  ? rw4006Description.ar.sections
+                  : lang === 'en'
+                    ? rw4006Description.en.sections
+                    : rw4006Description.fr.sections
+                ).map((sec) => (
+                  <div key={sec.h} className="rounded-2xl border border-border bg-background p-5">
+                    <p className="font-semibold text-primary">{sec.h}</p>
+                    <ul className="mt-3 space-y-2 text-sm leading-relaxed">
+                      {sec.items.map((it) => (
+                        <li key={it}>{it}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </section>
 
         {/* FAQ PREVIEW */}

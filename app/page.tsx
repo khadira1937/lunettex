@@ -66,7 +66,7 @@ export default function Home() {
           fr: 'Lunettes connectées Ray‑Ban Meta Wayfarer Gen 2 au Maroc',
           en: 'Ray‑Ban Meta Wayfarer Gen 2 Smart Glasses in Morocco',
         },
-        price: 2600,
+        price: 2700,
         image: '/images/product2-1.png',
         gallery: ['/images/product2-1.png', '/images/product2-2.png'],
       },

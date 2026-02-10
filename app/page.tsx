@@ -353,10 +353,7 @@ export default function Home() {
                   {ui.titleProduct}
                 </span>
               </h1>
-              <p className="mt-5 text-base md:text-lg text-white/90 leading-relaxed">
-                {ui.subtitle}
-                <span className="block mt-2 text-white/80 text-sm">{ui.note}</span>
-              </p>
+              <p className="mt-5 text-base md:text-lg text-white/90 leading-relaxed">{ui.subtitle}</p>
 
               {/* Model picker moved to Details section for a cleaner hero */}
 
@@ -577,9 +574,7 @@ export default function Home() {
                       <p className="font-semibold text-primary">
                         {lang === 'ar' ? '🛡️ ضمان' : lang === 'en' ? '🛡️ Warranty' : '🛡️ Garantie'}
                       </p>
-                      <p className="text-muted-foreground">
-                        {lang === 'ar' ? '7 أيام' : lang === 'en' ? '7 days' : '7 jours'}
-                      </p>
+                      {/* مدة الضمان / Warranty duration hidden */}
                     </div>
                     <div className="rounded-xl border border-border bg-background px-4 py-3">
                       <p className="font-semibold text-primary">

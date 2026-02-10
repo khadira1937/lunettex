@@ -187,6 +187,26 @@ export default function CheckoutPage() {
         return
       }
 
+      // Meta Pixel: Lead on successful checkout
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const w = window as any
+      if (typeof w.fbq === 'function') {
+        w.fbq('track', 'Lead', {
+          channel: 'checkout',
+          content_name: productName,
+          content_ids: [product.id],
+          content_type: 'product',
+          value: product.priceMad * quantity,
+          currency: 'MAD',
+        })
+        w.fbq('trackCustom', 'CheckoutLead', {
+          productId: product.id,
+          productName,
+          quantity,
+          valueMad: product.priceMad * quantity,
+        })
+      }
+
       setDoneId(json.id)
     } catch {
       setError(ui.errGeneric)

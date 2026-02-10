@@ -62,9 +62,9 @@ export default function Home() {
       {
         id: 'wayfarer-essilor',
         name: {
-          ar: 'نظارات Ray‑Ban Meta Wayfarer Gen 2',
-          fr: 'Lunettes connectées Ray‑Ban Meta Wayfarer Gen 2',
-          en: 'Ray‑Ban Meta Wayfarer Gen 2 Smart Glasses',
+          ar: 'نظارات Ray‑Ban Meta Wayfarer Gen 2 فالمغرب',
+          fr: 'Lunettes connectées Ray‑Ban Meta Wayfarer Gen 2 au Maroc',
+          en: 'Ray‑Ban Meta Wayfarer Gen 2 Smart Glasses in Morocco',
         },
         price: 2600,
         image: '/images/product2-1.png',

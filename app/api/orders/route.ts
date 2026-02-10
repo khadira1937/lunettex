@@ -13,8 +13,7 @@ const OrderSchema = z.object({
   email: z.string().email().optional().or(z.literal('')),
   city: z.string().min(2),
   address: z.string().min(5),
-  paymentMethod: z.enum(['pay_on_delivery', 'cih_transfer']),
-  notes: z.string().max(500).optional().or(z.literal('')),
+  // currently: pay on delivery only (simple checkout)
   acceptTerms: z.literal(true),
   // basic honeypot
   website: z.string().optional().or(z.literal('')),
@@ -48,8 +47,8 @@ export async function POST(req: Request) {
       email: parsed.data.email || null,
       city: parsed.data.city,
       address: parsed.data.address,
-      payment_method: parsed.data.paymentMethod,
-      notes: parsed.data.notes || null,
+      payment_method: 'pay_on_delivery',
+      notes: null,
       status: 'new',
     }
 
@@ -71,14 +70,13 @@ export async function POST(req: Request) {
         `ID produit: ${parsed.data.productId}`,
         `Quantité: ${parsed.data.quantity}`,
         `Prix (MAD): ${parsed.data.priceMad}`,
-        `Paiement: ${parsed.data.paymentMethod === 'pay_on_delivery' ? 'Paiement à la livraison' : 'Virement CIH'}`,
+        `Paiement: Paiement à la livraison`,
         '',
         `Nom: ${parsed.data.fullName}`,
         `Téléphone: ${parsed.data.phone}`,
         `E-mail: ${parsed.data.email || '-'}`,
         `Ville: ${parsed.data.city}`,
         `Adresse: ${parsed.data.address}`,
-        `Notes: ${parsed.data.notes || '-'}`,
         '',
         `Order ID: ${data.id}`,
         `Created: ${data.created_at}`,

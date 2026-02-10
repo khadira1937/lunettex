@@ -33,8 +33,6 @@ export default function CheckoutPage() {
   const [city, setCity] = useState('')
   const [address, setAddress] = useState('')
   const [quantity, setQuantity] = useState(1)
-  const [paymentMethod, setPaymentMethod] = useState<'pay_on_delivery' | 'cih_transfer'>('pay_on_delivery')
-  const [notes, setNotes] = useState('')
   const [acceptTerms, setAcceptTerms] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [doneId, setDoneId] = useState<string | null>(null)
@@ -66,8 +64,6 @@ export default function CheckoutPage() {
           email,
           city,
           address,
-          paymentMethod,
-          notes,
           acceptTerms: true,
           website: '',
         }),
@@ -93,27 +89,28 @@ export default function CheckoutPage() {
       <HeaderMegaMenu />
 
       <main className="bg-background">
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <h1 className="text-3xl md:text-4xl font-serif font-bold text-primary">Acheter maintenant</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Remplissez ce formulaire — nous vous contactons pour confirmer la commande.
-          </p>
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="rounded-3xl border border-border bg-card p-6 md:p-10">
+            <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary">Acheter maintenant</h1>
+            <p className="mt-3 text-base md:text-lg text-muted-foreground">
+              Remplissez ce formulaire — nous vous contactons par téléphone/WhatsApp pour confirmer la commande.
+            </p>
 
-          <div className="mt-8 grid gap-6 lg:grid-cols-5">
-            {/* Form */}
-            <div className="lg:col-span-3 rounded-3xl border border-border bg-card p-6">
+            <div className="mt-10 grid gap-6 lg:grid-cols-5">
+              {/* Form */}
+              <div className="lg:col-span-3 rounded-3xl border border-border bg-background p-6 md:p-8">
               {doneId ? (
                 <div>
-                  <p className="text-lg font-semibold text-primary">Merci ! Votre commande est enregistrée.</p>
+                  <p className="text-2xl font-semibold text-primary">Merci ! Votre commande est enregistrée.</p>
                   <p className="mt-2 text-sm text-muted-foreground">
                     ID commande: <span className="font-mono">{doneId}</span>
                   </p>
-                  <p className="mt-4 text-sm">
+                  <p className="mt-4 text-base text-muted-foreground">
                     Nous allons vous contacter rapidement pour confirmer.
                   </p>
                 </div>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-5">
                   <div>
                     <label className="text-sm font-semibold text-primary">Produit</label>
                     <div className="mt-1 rounded-xl border border-border bg-background px-4 py-3 text-sm">
@@ -127,7 +124,7 @@ export default function CheckoutPage() {
                       <input
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
-                        className="mt-1 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm"
+                        className="mt-2 w-full rounded-2xl border border-border bg-card px-5 py-4 text-base"
                         placeholder="Nom et prénom"
                       />
                     </div>
@@ -136,7 +133,7 @@ export default function CheckoutPage() {
                       <input
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        className="mt-1 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm"
+                        className="mt-2 w-full rounded-2xl border border-border bg-card px-5 py-4 text-base"
                         placeholder="06..."
                       />
                     </div>
@@ -148,7 +145,7 @@ export default function CheckoutPage() {
                       <input
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="mt-1 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm"
+                        className="mt-2 w-full rounded-2xl border border-border bg-card px-5 py-4 text-base"
                         placeholder="nom@email.com"
                       />
                     </div>
@@ -160,7 +157,7 @@ export default function CheckoutPage() {
                         max={10}
                         value={quantity}
                         onChange={(e) => setQuantity(Number(e.target.value || 1))}
-                        className="mt-1 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm"
+                        className="mt-2 w-full rounded-2xl border border-border bg-card px-5 py-4 text-base"
                       />
                     </div>
                   </div>
@@ -171,20 +168,13 @@ export default function CheckoutPage() {
                       <input
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
-                        className="mt-1 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm"
+                        className="mt-2 w-full rounded-2xl border border-border bg-card px-5 py-4 text-base"
                         placeholder="Rabat, Casablanca..."
                       />
                     </div>
-                    <div>
-                      <label className="text-sm font-semibold text-primary">Mode de paiement</label>
-                      <select
-                        value={paymentMethod}
-                        onChange={(e) => setPaymentMethod(e.target.value as any)}
-                        className="mt-1 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm"
-                      >
-                        <option value="pay_on_delivery">Paiement à la livraison</option>
-                        <option value="cih_transfer">Virement CIH</option>
-                      </select>
+                    <div className="rounded-2xl border border-border bg-secondary px-5 py-4">
+                      <p className="text-sm font-semibold text-primary">Paiement</p>
+                      <p className="mt-1 text-sm text-muted-foreground">Paiement à la livraison</p>
                     </div>
                   </div>
 
@@ -193,22 +183,12 @@ export default function CheckoutPage() {
                     <textarea
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
-                      className="mt-1 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm min-h-[110px]"
+                      className="mt-2 w-full rounded-2xl border border-border bg-card px-5 py-4 text-base min-h-[130px]"
                       placeholder="Quartier, rue, numéro..."
                     />
                   </div>
 
-                  <div>
-                    <label className="text-sm font-semibold text-primary">Note (optionnel)</label>
-                    <textarea
-                      value={notes}
-                      onChange={(e) => setNotes(e.target.value)}
-                      className="mt-1 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm min-h-[90px]"
-                      placeholder="Ex: meilleure heure pour appeler..."
-                    />
-                  </div>
-
-                  {error && <p className="text-sm text-destructive">{error}</p>}
+                  {error && <p className="text-base text-destructive">{error}</p>}
 
                   <label className="flex items-start gap-3 text-sm">
                     <input
@@ -230,7 +210,7 @@ export default function CheckoutPage() {
                     type="button"
                     onClick={submit}
                     disabled={submitting}
-                    className="inline-flex w-full justify-center items-center rounded-full bg-accent text-accent-foreground px-7 py-3 font-semibold hover:opacity-90 transition disabled:opacity-60"
+                    className="inline-flex w-full justify-center items-center rounded-full bg-accent text-accent-foreground px-8 py-4 text-base md:text-lg font-semibold hover:opacity-90 transition disabled:opacity-60"
                   >
                     {submitting ? 'Envoi…' : 'Commander'}
                   </button>
@@ -243,7 +223,7 @@ export default function CheckoutPage() {
             </div>
 
             {/* Summary */}
-            <div className="lg:col-span-2 rounded-3xl border border-border bg-card p-6">
+            <div className="lg:col-span-2 rounded-3xl border border-border bg-background p-6 md:p-8">
               <p className="font-semibold text-primary">Votre commande</p>
               <div className="mt-4 space-y-2 text-sm">
                 <div className="flex justify-between gap-4">
@@ -265,12 +245,11 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <div className="mt-6 rounded-2xl border border-border bg-secondary p-4 text-sm">
+              <div className="mt-6 rounded-2xl border border-border bg-secondary p-5 text-sm">
                 <p className="font-semibold text-primary">Paiement</p>
-                <p className="mt-1 text-muted-foreground">
-                  {paymentMethod === 'pay_on_delivery' ? 'Paiement à la livraison' : 'Virement CIH'}
-                </p>
+                <p className="mt-1 text-muted-foreground">Paiement à la livraison</p>
               </div>
+            </div>
             </div>
           </div>
         </section>

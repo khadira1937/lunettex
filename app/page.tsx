@@ -51,9 +51,9 @@ export default function Home() {
       {
         id: 'rw4006',
         name: {
-          ar: 'Ray‑Ban Meta Wayfarer (RW4006)',
-          fr: 'Ray‑Ban Meta Wayfarer (RW4006)',
-          en: 'Ray‑Ban Meta Wayfarer (RW4006)',
+          ar: 'نظارات Ray‑Ban Meta Wayfarer Gen 1 (RW4006)',
+          fr: 'Lunettes connectées Ray‑Ban Meta Wayfarer Gen 1 (RW4006)',
+          en: 'Ray‑Ban Meta Wayfarer Gen 1 Smart Glasses (RW4006)',
         },
         price: 3000,
         image: '/images/ray-ban-1.png',
@@ -62,9 +62,9 @@ export default function Home() {
       {
         id: 'wayfarer-essilor',
         name: {
-          ar: 'RAY‑BAN META WAYFARER ESSILORLUXOTTICA',
-          fr: 'RAY‑BAN META WAYFARER ESSILORLUXOTTICA',
-          en: 'RAY‑BAN META WAYFARER ESSILORLUXOTTICA',
+          ar: 'نظارات Ray‑Ban Meta Wayfarer (RW4006) — نسخة أخرى',
+          fr: 'Ray‑Ban Meta Wayfarer (RW4006) — autre version',
+          en: 'Ray‑Ban Meta Wayfarer (RW4006) — alternate version',
         },
         price: 2600,
         image: '/images/product2-1.png',
@@ -191,7 +191,7 @@ export default function Home() {
   const rw4006Description = useMemo(() => {
     return {
       fr: {
-        title: 'Description — Ray‑Ban Meta Wayfarer Gen 1 (Meta AI) au Maroc',
+        title: 'Description — Lunettes connectées Ray‑Ban Meta Wayfarer Gen 1 (Meta AI) au Maroc',
         intro:
           'Découvrez une nouvelle façon de capturer, écouter et communiquer — sans sortir votre smartphone. Les Ray‑Ban Meta Wayfarer Gen 1 combinent le style iconique Wayfarer avec une caméra mains libres, un son open‑ear et l’assistant vocal Meta AI.',
         sections: [
@@ -232,7 +232,7 @@ export default function Home() {
         ],
       },
       en: {
-        title: 'Description — Ray‑Ban Meta Wayfarer Gen 1 (Meta AI) in Morocco',
+        title: 'Description — Ray‑Ban Meta Wayfarer Gen 1 Smart Glasses (Meta AI) in Morocco',
         intro:
           'A new way to capture, listen and communicate — without taking out your phone. Ray‑Ban Meta Wayfarer Gen 1 combines the iconic Wayfarer look with a hands‑free camera, open‑ear audio and the Meta AI voice assistant.',
         sections: [
@@ -273,7 +273,7 @@ export default function Home() {
         ],
       },
       ar: {
-        title: 'الوصف — Ray‑Ban Meta Wayfarer Gen 1 (Meta AI) فالمغرب',
+        title: 'الوصف — نظارات Ray‑Ban Meta Wayfarer Gen 1 (Meta AI) فالمغرب',
         intro:
           'طريقة جديدة باش تصوّر وتسمع وتبقى متاصل — بلا ما تخرج التليفون. Ray‑Ban Meta Wayfarer Gen 1 كاتجمع ستايل Wayfarer الكلاسيكي مع كاميرا بلا يدين، صوت open‑ear، والمساعد الصوتي Meta AI.',
         sections: [

@@ -7,7 +7,7 @@ import { Footer } from '@/components/Footer'
 import { StickyWhatsApp } from '@/components/StickyWhatsApp'
 import { buildWhatsAppLink, buildOrderTemplate } from '@/lib/whatsapp'
 import { useLang } from '@/components/LanguageProvider'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 function trackWhatsAppLead(payload?: { productName?: string; valueMad?: number }) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -57,7 +57,7 @@ export default function Home() {
         },
         price: 3000,
         image: '/images/ray-ban-1.png',
-        gallery: ['/images/ray-ban-1.png', '/images/ray-ban-2.png', '/images/rayban-3.png'],
+        gallery: ['/images/rayban-1.png', '/images/rayban-2.png', '/images/ray-ban-3.png'], 
       },
       {
         id: 'wayfarer-essilor',
@@ -76,6 +76,13 @@ export default function Home() {
 
   const [selectedId, setSelectedId] = useState<LandingProduct['id']>('rw4006')
   const selected = products.find((p) => p.id === selectedId) || products[0]
+
+  const [activeImage, setActiveImage] = useState<string>(selected.gallery[0] || selected.image)
+
+  useEffect(() => {
+    setActiveImage(selected.gallery[0] || selected.image)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedId])
 
   const selectedName = lang === 'ar' ? selected.name.ar : lang === 'en' ? selected.name.en : selected.name.fr
   const currency = lang === 'ar' ? 'درهم' : lang === 'en' ? 'MAD' : 'DH'
@@ -99,28 +106,40 @@ export default function Home() {
     return {
       rw4006: {
         ar: {
-          bullets: `• كاميرا مدمجة للتصوير بلا يدين.
-• صوت Open‑Ear باش تسمع بلا ما تعزل على اللي داير بك.
-• مايكات باش المكالمات تكون واضحة.
-• تحكم: زر التقاط + Touch فالإطار.`, 
+          bullets: `• مساعد صوتي Meta AI مدمج.
+• الكاميرا: صور 3024×4032 / فيديو 1440×1920 @ 30fps.
+• الصوت: جوج سبيكرات + 5 مايكات.
+• الذاكرة: 32GB (حوالي 500 صورة ولا 100 فيديو).
+• Bluetooth 5.2 + Wi‑Fi 6.
+• البطارية: حتى لـ 4 ساعات.
+• كتخدم مع iOS و Android 10+.
+• الستايل: كحل لامع، عدسات خضر G‑15.`, 
           importantTitle: 'معلومة مهمة',
           importantBody:
             'كتحتاج هاتف + Bluetooth + التطبيق باش تركّب وتبدّل الإعدادات وتنسّق الصور/الفيديو.',
         },
         en: {
-          bullets: `• Built‑in camera for hands‑free capture.
-• Open‑ear audio so you stay aware.
-• Multiple mics for clearer calls.
-• Controls: capture button + touch controls on the frame.`, 
+          bullets: `• Built‑in Meta AI voice assistant.
+• Camera: 3024×4032 photos / 1440×1920 video @ 30 fps.
+• Audio: 2 speakers + 5 microphones.
+• Storage: 32 GB (≈ 500 photos or ≈ 100 videos).
+• Bluetooth 5.2 + Wi‑Fi 6.
+• Battery: up to 4 hours.
+• Compatible with iOS and Android 10+.
+• Style: glossy black, green G‑15 lenses.`, 
           importantTitle: 'Important',
           importantBody:
             'Requires a phone + Bluetooth + the companion app for setup, settings, and syncing photos/videos.',
         },
         fr: {
-          bullets: `• Caméra intégrée pour capturer en mains libres.
-• Audio open‑ear pour rester conscient de votre environnement.
-• Plusieurs micros pour des appels plus clairs.
-• Contrôles: bouton capture + tactile sur la branche.`, 
+          bullets: `• Assistant vocal Meta AI intégré.
+• Caméra photo 3024×4032 / vidéo 1440×1920 @ 30 fps.
+• Audio: 2 haut‑parleurs + 5 micros.
+• Mémoire 32 Go (≈ 500 photos ou ≈ 100 vidéos).
+• Bluetooth 5.2 + Wi‑Fi 6.
+• Autonomie jusqu’à 4 heures.
+• Compatible iOS et Android 10+.
+• Style: Noir brillant, verres G‑15 verts.`, 
           importantTitle: 'Important',
           importantBody:
             'Nécessite un téléphone + Bluetooth + l’application compagnon pour l’installation, les réglages et la synchronisation.',
@@ -485,7 +504,7 @@ export default function Home() {
             <div className="rounded-3xl border border-border bg-card p-6">
               <div className="relative aspect-square rounded-2xl overflow-hidden bg-background">
                 <Image
-                  src={selected.gallery[0] || selected.image}
+                  src={activeImage}
                   alt={selectedName}
                   fill
                   className="object-contain p-8"
@@ -494,14 +513,22 @@ export default function Home() {
               <div
                 className={`mt-4 grid gap-2 ${selected.gallery.length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}
               >
-                {selected.gallery.map((src) => (
-                  <div
-                    key={src}
-                    className="relative aspect-square rounded-xl border border-border bg-background overflow-hidden"
-                  >
-                    <Image src={src} alt={selectedName} fill className="object-contain p-4" />
-                  </div>
-                ))}
+                {selected.gallery.map((src, idx) => {
+                  const isActive = src === activeImage
+                  return (
+                    <button
+                      key={src}
+                      type="button"
+                      onClick={() => setActiveImage(src)}
+                      className={`relative aspect-square rounded-xl border bg-background overflow-hidden transition focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background ${
+                        isActive ? 'border-accent' : 'border-border hover:border-primary/40'
+                      }`}
+                      aria-label={`Select image ${idx + 1}`}
+                    >
+                      <Image src={src} alt={selectedName} fill className="object-contain p-4" />
+                    </button>
+                  )
+                })}
               </div>
 
               {/* Trust proof removed */}

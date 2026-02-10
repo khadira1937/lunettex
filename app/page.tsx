@@ -51,7 +51,7 @@ export default function Home() {
       {
         id: 'rw4006',
         name: {
-          ar: 'نظارات Ray‑Ban Meta Wayfarer Gen 1 (RW4006)',
+          ar: 'Lunettes connectées Ray‑Ban Meta Wayfarer Gen 1 au Maroc',
           fr: 'Lunettes connectées Ray‑Ban Meta Wayfarer Gen 1 au Maroc',
           en: 'Ray‑Ban Meta Wayfarer Gen 1 Smart Glasses (RW4006)',
         },

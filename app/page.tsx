@@ -62,9 +62,9 @@ export default function Home() {
       {
         id: 'wayfarer-essilor',
         name: {
-          ar: 'نظارات Ray‑Ban Meta Wayfarer (RW4006) — نسخة أخرى',
-          fr: 'Ray‑Ban Meta Wayfarer (RW4006) — autre version',
-          en: 'Ray‑Ban Meta Wayfarer (RW4006) — alternate version',
+          ar: 'نظارات Ray‑Ban Meta Wayfarer Gen 2',
+          fr: 'Lunettes connectées Ray‑Ban Meta Wayfarer Gen 2',
+          en: 'Ray‑Ban Meta Wayfarer Gen 2 Smart Glasses',
         },
         price: 2600,
         image: '/images/product2-1.png',
@@ -319,7 +319,7 @@ export default function Home() {
   const wayfarerEssilorDescription = useMemo(() => {
     return {
       fr: {
-        title: 'Description — Ray‑Ban Meta Wayfarer (EssilorLuxottica) au Maroc',
+        title: 'Description — Lunettes connectées Ray‑Ban Meta Wayfarer Gen 2 au Maroc',
         intro:
           'La version Ray‑Ban Meta Wayfarer signée EssilorLuxottica combine un design premium et une expérience smart complète: caméra mains libres, son open‑ear directionnel et commandes vocales. Idéal si vous voulez un look Ray‑Ban authentique avec les fonctions Meta intégrées.',
         sections: [
@@ -355,7 +355,7 @@ export default function Home() {
         ],
       },
       en: {
-        title: 'Description — Ray‑Ban Meta Wayfarer (EssilorLuxottica) in Morocco',
+        title: 'Description — Ray‑Ban Meta Wayfarer Gen 2 Smart Glasses in Morocco',
         intro:
           'This Ray‑Ban Meta Wayfarer by EssilorLuxottica combines a premium look with full smart features: hands‑free camera, directional open‑ear audio, and voice control. Perfect if you want authentic Ray‑Ban style with Meta features built in.',
         sections: [
@@ -391,7 +391,7 @@ export default function Home() {
         ],
       },
       ar: {
-        title: 'الوصف — Ray‑Ban Meta Wayfarer (EssilorLuxottica) فالمغرب',
+        title: 'الوصف — نظارات Ray‑Ban Meta Wayfarer Gen 2 فالمغرب',
         intro:
           'هاد النسخة ديال Ray‑Ban Meta Wayfarer من EssilorLuxottica كاتجمع شكل رايبان الأصلي مع المزايا الذكية: كاميرا بلا يدين، صوت open‑ear موجّه، وتحكم صوتي. زوينة للي بغا ستايل رايبان مع Meta مدمجة.',
         sections: [

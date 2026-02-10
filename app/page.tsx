@@ -208,7 +208,7 @@ export default function Home() {
           {
             h: 'Détails techniques (RW4006)',
             items: [
-              '📸 Photos: 3024 × 4032 px',
+              '📸 Photos: 3024 × 4032 px (12 MP)',
               '🎬 Vidéo: 1440 × 1920 px @ 30 fps',
               '🔊 Audio: 2 haut‑parleurs open‑ear + 5 microphones',
               '💾 Stockage: 32 Go (≈ 500 photos ou ≈ 100 vidéos)',
@@ -233,7 +233,7 @@ export default function Home() {
       en: {
         title: 'Description — Ray‑Ban Meta Wayfarer Gen 1 (Meta AI) in Morocco',
         intro:
-          'A new way to capture, listen and communicate — without taking out your phone. Ray‑Ban Meta Wayfarer Gen 1 combines the iconic Wayfarer look with hands‑free camera, open‑ear audio and the Meta AI voice assistant.',
+          'A new way to capture, listen and communicate — without taking out your phone. Ray‑Ban Meta Wayfarer Gen 1 combines the iconic Wayfarer look with a hands‑free camera, open‑ear audio and the Meta AI voice assistant.',
         sections: [
           {
             h: 'Smart features (Meta AI)',
@@ -249,7 +249,7 @@ export default function Home() {
           {
             h: 'Tech specs (RW4006)',
             items: [
-              '📸 Photos: 3024 × 4032 px',
+              '📸 Photos: 3024 × 4032 px (12 MP)',
               '🎬 Video: 1440 × 1920 px @ 30 fps',
               '🔊 Audio: 2 open‑ear speakers + 5 microphones',
               '💾 Storage: 32 GB (≈ 500 photos or ≈ 100 videos)',
@@ -290,7 +290,7 @@ export default function Home() {
           {
             h: 'المواصفات التقنية (RW4006)',
             items: [
-              '📸 الصور: 3024 × 4032',
+              '📸 الصور: 3024 × 4032 (12MP)',
               '🎬 الفيديو: 1440 × 1920 @ 30fps',
               '🔊 الصوت: جوج سبيكرات open‑ear + 5 مايكات',
               '💾 الذاكرة: 32GB (حوالي 500 صورة ولا 100 فيديو)',
@@ -298,6 +298,119 @@ export default function Home() {
               '🔋 البطارية: حتى لـ 4 ساعات',
               '📱 متوافقة: iOS / Android 10+',
               '🕶️ الستايل: كحل لامع، عدسات خضر G‑15',
+            ],
+          },
+          {
+            h: 'علاش تشريها من عندنا؟',
+            items: [
+              '✅ ثمن مزيان',
+              '✅ الدفع عند الاستلام فالمغرب',
+              '✅ التوصيل مع AMANA',
+              '✅ إرجاع/استبدال داخل 7 أيام',
+              '✅ دعم سريع فالواتساب (تأكيد قبل الإرسال)',
+            ],
+          },
+        ],
+      },
+    } as const
+  }, [])
+
+  const wayfarerEssilorDescription = useMemo(() => {
+    return {
+      fr: {
+        title: 'Description — Ray‑Ban Meta Wayfarer (EssilorLuxottica) au Maroc',
+        intro:
+          'La version Ray‑Ban Meta Wayfarer signée EssilorLuxottica combine un design premium et une expérience smart complète: caméra mains libres, son open‑ear directionnel et commandes vocales. Idéal si vous voulez un look Ray‑Ban authentique avec les fonctions Meta intégrées.',
+        sections: [
+          {
+            h: 'Ce que vous pouvez faire au quotidien',
+            items: [
+              '📸 Capture POV: prenez des photos/vidéos depuis votre point de vue, en restant dans le moment.',
+              '🎙️ Appels & messages: mains libres avec micros intégrés pour une voix plus claire.',
+              '🎧 Audio open‑ear: écoutez sans vous isoler (musique, podcasts, navigation audio).',
+              '🗣️ Contrôle vocal: lancez une action rapidement avec “Hey Meta…”.',
+              '📲 Partage facile: synchronisation via l’app Meta View.',
+            ],
+          },
+          {
+            h: 'Points forts (qualité & confort)',
+            items: [
+              '✨ Design Wayfarer iconique: discret, élégant, facile à porter tous les jours.',
+              '🔊 Son amélioré: meilleur volume + basses plus profondes + direction du son optimisée.',
+              '🔋 Recharge simple: étui de charge portable pour recharger facilement en déplacement.',
+              '🕶️ EssilorLuxottica: savoir‑faire lunettes (confort, finitions, ajustement).',
+            ],
+          },
+          {
+            h: 'Pourquoi l’acheter chez nous ?',
+            items: [
+              '✅ Prix plus avantageux',
+              '✅ Paiement à la livraison au Maroc',
+              '✅ Livraison via AMANA',
+              '✅ Retour/échange sous 7 jours',
+              '✅ Support WhatsApp rapide (confirmation avant envoi)',
+            ],
+          },
+        ],
+      },
+      en: {
+        title: 'Description — Ray‑Ban Meta Wayfarer (EssilorLuxottica) in Morocco',
+        intro:
+          'This Ray‑Ban Meta Wayfarer by EssilorLuxottica combines a premium look with full smart features: hands‑free camera, directional open‑ear audio, and voice control. Perfect if you want authentic Ray‑Ban style with Meta features built in.',
+        sections: [
+          {
+            h: 'What you can do every day',
+            items: [
+              '📸 POV capture: take photos/videos from your point of view while staying present.',
+              '🎙️ Calls & messages: hands‑free with built‑in mics for clearer voice.',
+              '🎧 Open‑ear audio: listen without isolating yourself (music, podcasts, audio guidance).',
+              '🗣️ Voice control: trigger actions quickly with “Hey Meta…”.',
+              '📲 Easy sharing: sync via the Meta View app.',
+            ],
+          },
+          {
+            h: 'Highlights (quality & comfort)',
+            items: [
+              '✨ Iconic Wayfarer design: clean, stylish, easy to wear daily.',
+              '🔊 Improved audio: louder sound + deeper bass + better direction.',
+              '🔋 Easy charging: portable charging case for on‑the‑go recharges.',
+              '🕶️ EssilorLuxottica craftsmanship: comfort, finishes, and fit.',
+            ],
+          },
+          {
+            h: 'Why buy from us?',
+            items: [
+              '✅ Better price',
+              '✅ Pay on delivery in Morocco',
+              '✅ Delivery via AMANA',
+              '✅ Returns/exchange within 7 days',
+              '✅ Fast WhatsApp support (confirmation before shipping)',
+            ],
+          },
+        ],
+      },
+      ar: {
+        title: 'الوصف — Ray‑Ban Meta Wayfarer (EssilorLuxottica) فالمغرب',
+        intro:
+          'هاد النسخة ديال Ray‑Ban Meta Wayfarer من EssilorLuxottica كاتجمع شكل رايبان الأصلي مع المزايا الذكية: كاميرا بلا يدين، صوت open‑ear موجّه، وتحكم صوتي. زوينة للي بغا ستايل رايبان مع Meta مدمجة.',
+        sections: [
+          {
+            h: 'شنو تقدر تدير يومياً',
+            items: [
+              '📸 تصوير POV: صور/فيديو من نفس المنظور ديالك وانت عايش اللحظة.',
+              '🎙️ مكالمات ورسائل: استعمال بلا يدين مع مايكات مدمجين لصوت أوضح.',
+              '🎧 صوت open‑ear: كيسمعك بلا ما يعزلك (موسيقى، بودكاست…).',
+              '🗣️ تحكم صوتي: غير قول “Hey Meta…” وطلق الخدمة بسرعة.',
+              '📲 مشاركة سهلة: سينك عبر تطبيق Meta View.',
+            ],
+          },
+          {
+            h: 'نقاط القوة (الجودة والراحة)',
+            items: [
+              '✨ ستايل Wayfarer: أنيق وبسيط وكيجي مع أي لوك.',
+              '🔊 صوت محسن: علوّ أكثر + bass أحسن + اتجاه الصوت مزيان.',
+              '🔋 شارژ ساهل: مع علبة الشحن باش تعاود تشحن فالطريق.',
+              '🕶️ خبرة EssilorLuxottica: راحة وجودة فالتشطيب والقياس.',
             ],
           },
           {
@@ -806,7 +919,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Product description (only for RW4006 for now) */}
+          {/* Product description (per selected model) */}
           {selectedId === 'rw4006' && (
             <div className="mt-12 rounded-3xl border border-border bg-card p-6 md:p-8">
               <h3 className="text-2xl md:text-3xl font-serif font-bold text-primary">
@@ -830,6 +943,43 @@ export default function Home() {
                   : lang === 'en'
                     ? rw4006Description.en.sections
                     : rw4006Description.fr.sections
+                ).map((sec) => (
+                  <div key={sec.h} className="rounded-2xl border border-border bg-background p-5">
+                    <p className="font-semibold text-primary">{sec.h}</p>
+                    <ul className="mt-3 space-y-2 text-sm leading-relaxed">
+                      {sec.items.map((it) => (
+                        <li key={it}>{it}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {selectedId === 'wayfarer-essilor' && (
+            <div className="mt-12 rounded-3xl border border-border bg-card p-6 md:p-8">
+              <h3 className="text-2xl md:text-3xl font-serif font-bold text-primary">
+                {(lang === 'ar'
+                  ? wayfarerEssilorDescription.ar.title
+                  : lang === 'en'
+                    ? wayfarerEssilorDescription.en.title
+                    : wayfarerEssilorDescription.fr.title) as string}
+              </h3>
+              <p className="mt-3 text-sm md:text-base leading-relaxed text-muted-foreground">
+                {(lang === 'ar'
+                  ? wayfarerEssilorDescription.ar.intro
+                  : lang === 'en'
+                    ? wayfarerEssilorDescription.en.intro
+                    : wayfarerEssilorDescription.fr.intro) as string}
+              </p>
+
+              <div className="mt-7 grid gap-6 lg:grid-cols-2">
+                {(lang === 'ar'
+                  ? wayfarerEssilorDescription.ar.sections
+                  : lang === 'en'
+                    ? wayfarerEssilorDescription.en.sections
+                    : wayfarerEssilorDescription.fr.sections
                 ).map((sec) => (
                   <div key={sec.h} className="rounded-2xl border border-border bg-background p-5">
                     <p className="font-semibold text-primary">{sec.h}</p>
